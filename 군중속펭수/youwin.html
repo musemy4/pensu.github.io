@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <style>
+
+        /* 배경화면 */
+        body {
+            background: url("youwin.png");
+            background-size: 100%;
+            background-color: rgb(0,0,0);
+            background-repeat: no-repeat;
+            /* z-index: 1; */
+        }
+
+        /* 피흘리는 제목 시작 */
+        body, html {
+        -webkit-filter: blur(1px) contrast(1.6);
+        filter: blur(1px) contrast(1.6);
+        height: 100%; width: 100%;
+        overflow: hidden;
+        }
+        div {
+        font-size: 80px;
+        font-family: 'Chiller', cursive;
+        color: red;
+        text-shadow: 0 0 1px red;
+        position: absolute;
+        z-index: 1;
+        top: 300px;
+        left: 300px;
+        }
+        /* 피흘리는 제목 끝 */
+
+        /* 스타트 버튼 시작 */
+        .startBtn {
+            position: fixed;
+            top: 450px;
+            left: 450px;
+
+            border: none;
+            background: none;
+            cursor: pointer;
+            z-index: 1;
+        }
+        /* 스타트 버튼 끝 */
+
+
+    </style>
+</head>
+<body>
+   
+   
+
+    <div>YOU WIN...</div>
+
+   
+
+    <script>
+
+    var ctx = $('<canvas>').get(0).getContext('2d');
+
+        $(function(){
+    // var ctx = $('<canvas>').get(0).getContext('2d');
+    $('body').append(ctx.canvas);
+    ctx.canvas.height = 2000;
+    ctx.canvas.width = 2000;
+    // ctx.canvas.style.visibility = "hidden";
+    $(ctx.canvas).css({
+        position: 'absolute',
+        top: '0'
+    });
+    var Blood = function(x,y,r,s){
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.cy = y;
+        this.speed = s;
+    };
+    Blood.prototype.draw = function(){
+        ctx.beginPath();
+        ctx.arc(this.x +1,this.cy,this.r,0,Math.PI*2);
+        ctx.closePath();
+        ctx.fillStyle = 'red';
+        ctx.fill();   
+    };
+    var bloodDrops = [
+        new Blood(  4,0,  1,  2),
+        new Blood( 15,4,  1,1.5),
+        new Blood( 49,2,1.5,  1),
+        new Blood( 68,4,  2,1.7),
+        new Blood(106,8,  1,1.3),
+        new Blood(134,1,  1,1.9),
+        new Blood(164,1,  1,1.4),
+        new Blood(212,6,1.3,1.1),
+        new Blood(263,2,1.8,0.7),
+        new Blood(270,5,1.4,1.3),
+        new Blood(311,2,1.8,1.2),
+        new Blood(317,5,1.4,0.9),
+        new Blood(363,8,0.8,1.3),
+        new Blood(408,0,1.2,1.6),
+        new Blood(466,7,0.8,1.3),
+        new Blood(500,1,  1,1.2),
+        new Blood(512,4,1.7,1.5),
+        new Blood(546,4,1.7,0.8),
+        new Blood(674,0,  1,  2),
+        new Blood(615,4,  1,1.5),
+        new Blood(749,2,1.5,  1),
+        new Blood(768,4,  2,1.7),
+        new Blood(706,8,  1,1.3),
+        new Blood(834,1,  1,1.9),
+        new Blood(864,1,  1,1.4),
+        new Blood(812,6,1.3,1.1),
+        new Blood(963,2,1.8,0.7),
+        new Blood(970,5,1.4,1.3),
+        new Blood(1011,2,1.8,1.2),
+        new Blood(917,5,1.4,0.9),
+        new Blood(963,8,0.8,1.3),
+        new Blood(808,0,1.2,1.6),
+        new Blood(866,7,0.8,1.3),
+        new Blood(900,1,  1,1.2),
+        new Blood(1012,4,1.7,1.5),
+        new Blood(1046,4,1.7,0.8),
+        new Blood(1063,2,1.8,0.7),
+        new Blood(1170,5,1.4,1.3),
+        new Blood(1111,2,1.8,1.2),
+        new Blood(1217,5,1.4,0.9),
+        new Blood(1263,8,0.8,1.3),
+        new Blood(1208,0,1.2,1.6),
+        new Blood(1366,7,0.8,1.3),
+        new Blood(1300,1,  1,1.2),
+        new Blood(1412,4,1.7,1.5),
+        new Blood(1446,4,1.7,0.8)
+    ]
+
+    
+        var loop = function(){
+        setTimeout(loop, 10)
+        ctx.fillStyle = 'rgba(0,0,0,0.1)';
+        ctx.fillRect(0,0,2000,2000);
+        for(var i = 0; i < bloodDrops.length; ++i){
+        bloodDrops[i].cy += bloodDrops[i].speed;
+        if(bloodDrops[i].cy > 2000) 
+            bloodDrops[i].cy = bloodDrops[i].y;
+        bloodDrops[i].draw();
+        }
+        };
+        loop();
+        })
+        
+
+        // 천둥치는 효과 주는 메서드  시작
+        setInterval(function() {
+            ctx.canvas.style.visibility = "hidden";
+        },1000)
+  
+        setInterval(function() {
+            ctx.canvas.style.visibility = "";
+        },1030)
+
+        setInterval(function() {
+            ctx.canvas.style.visibility = "hidden";
+        },1060)
+  
+        setInterval(function() {
+            ctx.canvas.style.visibility = "";
+        },1090)
+        // 천둥치는 효과 주는 메서드  끝
+
+
+        function gameStart() {
+            location.href = "explain.html"
+        }
+
+
+    </script>
+
+</body>
+</html>

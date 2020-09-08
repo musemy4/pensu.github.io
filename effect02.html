@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PengWorld</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link href="animsition.min.css" rel="stylesheet">     
+    <link rel="stylesheet" href="backandtop.css">
+    <link href="./font/font.css" rel="stylesheet" type="text/css">
+<style>
+
+
+
+     /* popup 효과 style 시작 */
+   .poppoppop {
+        width: 100%;
+        height: 100vh;
+        display: none;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    /* 팝업 기능 넣으려면 poppoppop-article 마다 이렇게 3줄씩 추가해야함 */
+    #poppoppop-article:target {
+        display: flex;
+    }
+
+    #poppoppop-article1:target {
+        display: flex;
+    }
+    #poppoppop-article2:target {
+        display: flex;
+    }
+    #poppoppop-article3:target {
+        display: flex;
+    }
+   
+    /* 팝업 기능 넣으려면 poppoppop-article 마다 이렇게 3줄씩 추가해야함 끝 */
+
+
+    .poppoppop:before {
+            content: "";
+            box-sizing: border-box;
+            width: 100%;
+        /* 팝업창 뜰때 보이는 커텐같은 영역 색상. 마지막 숫자가 불투명도 */
+            background-color: rgb(212, 71, 71);
+
+            position: fixed;
+            left: 0;
+            top: 50%;
+            will-change: height, top;
+            animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+        }
+
+
+    .poppoppop:after {
+            content: "";
+            width: 0;
+            height: 2px;
+
+            /* 번쩍 나타나는 선 색상 */
+            background-color: rgb(212, 71, 71);
+
+            will-change: width, opacity;
+            animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -1px;
+        }
+
+    /* 선긋는 애니메이션 */
+    @keyframes line-animation {
+
+        0% {
+            width: 0;
+            opacity: 1;
+        }
+
+        99% {
+            width: 100%;
+            opacity: 1;
+        }
+
+        100% {
+            width: 100%;
+            opacity: 0;
+        }
+    }
+
+    /* 창문처럼 열리는 애니메이션 */
+    @keyframes open-animation {
+
+        0% {
+            height: 0;
+            top: 50%;
+        }
+
+        100% {
+            height: 100vh;
+            top: 0;
+        }
+    }
+
+
+    .poppoppop__block {
+            
+            position: absolute;
+            top:5%;
+            left:5%;
+
+            width: 90%;
+            height: 90%;
+            
+
+            /* margin: auto; */
+            overflow: hidden;
+            animation: fade .5s ease-out 1.3s both;
+        }
+
+        @keyframes fade {
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .poppoppop__close {
+            width: 3.2rem;
+            height: 3.2rem;
+            text-indent: -9999px;
+
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+        }
+
+         @media screen and (min-width: 768px) {
+
+            html {
+                font-size: 62.5%;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+            html {
+                font-size: 50%;
+            }
+        }
+
+        iframe {
+            display:block;
+            width:100%; 
+            height: 100%;
+        }
+    /* popup style 끝 */
+
+
+
+
+
+
+    .animsition-overlay-slide {
+        background-color: brown;
+    }
+
+    img{
+        width:500px;
+        height: 350px;
+    }
+
+    h3{
+        font-family: '210 오복상회';
+    }
+
+    .code--small{
+        width:520px;
+        height: 370px;
+    }
+
+    .animsition-overlay-slide {
+        background-color: #f0a900;
+    }
+</style>
+</head>
+<body>
+    <div class="animsition-overlay">
+      
+        <div class="backgrounds overlay">
+            <div class="background" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".section--hero"></div>
+        </div>
+        <!-- 로고랑 top버튼 추가 -->
+        <img id="back" src="./backlogo.PNG" alt="" onclick="back()">
+        <a id="MOVE_TOP_BTN" href="#">▲TOP</a>
+        <!-- 로고랑 top버튼 추가 -->
+        <header class="hero">
+            <div class="hero-center">
+                <h1 class="hero__logo" data-aos="zoom-in">Non-interative</h1>
+                <!-- <h2 class="hero__text" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">Animate On Scroll <span>Library</span></h2> -->
+            </div>
+            <span class="hero__scroll" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="800">
+                Scroll down <br>
+                <i class="chevron bottom"></i>
+            </span>
+        </header>
+
+        <section class="section section--code">
+            <div class="container">
+                <!-- <h2 class="section-title">Flip</h2> -->
+                
+                <!-- 여기에 넣으시면 됩니다 -->
+                <div class="code code--small code--left" data-aos="flip-left">
+                     <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article" >    
+                    <img src="./non0.png" alt="">
+                </a>
+                <h3 id="desc1_1">가나다라마바사아자차카타파하</h3>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+                <div class="code code--small code--right" data-aos="flip-right">
+                     <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                     <a href="#poppoppop-article1" >
+                    <img src="https://www.sisajournal.com/news/photo/201911/192566_97440_4515.jpg" alt="">
+                </a>
+                <h3 id="desc1_1">가나다라마바사아자차카타파하</h3>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+                <div class="code code--small code--left" data-aos="flip-up">
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article2" >
+                    <img src="https://www.sisajournal.com/news/photo/201911/192566_97440_4515.jpg" alt="">
+                </a>
+                <h3 id="desc1_1">가나다라마바사아자차카타파하</h3>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+                <div class="code code--small code--right" data-aos="flip-down">
+                     <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                     <a href="#poppoppop-article3" >
+                    <img src="https://www.sisajournal.com/news/photo/201911/192566_97440_4515.jpg" alt="">
+                </a>
+                <h3 id="desc1_1">가나다라마바사아자차카타파하</h3>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+    
+        </section>
+    </div>
+    </div>
+
+
+    <!-- 팝업 body 시작 -->
+      <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+
+      <div id="poppoppop-article" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src=".html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    <div id="poppoppop-article1" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src=".html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article1:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    <div id="poppoppop-article2" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src=".html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article2:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    <div id="poppoppop-article3" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src=".html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article3:target class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+
+    <!-- 팝업 body 끝 -->
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="animsition.min.js" charset="utf-8"></script>
+    <script>
+        //시작 펑션
+        $(document).ready(function() {
+            $('.animsition-overlay').animsition({
+            inClass: 'overlay-slide-in-top',
+            outClass: 'overlay-slide-out-top',
+            overlay : true,
+            overlayClass : 'animsition-overlay-slide',
+            overlayParentElement : 'body'
+            })
+            
+        });
+
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 1000
+        });
+    </script>
+    <script src="backandtop.js"></script>
+</body>
+</html>

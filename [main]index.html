@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="animsition.min.css" rel="stylesheet"> -->
+    <link href="./font/font.css" rel="stylesheet" type="text/css">
+    <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto");
+    
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    html, body {
+        height: 100%;
+        width: 100%;
+        font-family: "Roboto", sans-serif; 
+        margin: 0;
+    }
+    .animsition {
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+    }
+
+    .opening {
+        position: absolute;
+        margin: 0 auto;
+        border: 30px solid #299392;
+        /* min-height: 88vh;
+        min-width: 92vh;
+        max-width: 100%;
+         */
+        height: 100%;
+        width: 100%;
+        background:#f9d48e;
+        text-align: center;
+        /* width: 100%;
+        height: 100%; */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        z-index: 100;
+        display: block;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1s linear;
+    }
+
+        /* 제목 이미지 사이즈조절-해리 */
+        .title img{
+        position: absolute;
+        left:10%;
+        width: 50vw;
+    }
+
+    .hi{
+        position: relative;
+        display: inline;
+        top:23%;
+    }    
+
+
+    .title{
+      font-size: 6.5vw;
+      top: 66%;
+      left: 4%;
+      height: 700px;
+      position:absolute;
+      color:white;
+      text-shadow: 1px 4px 10px black, 0 0 0 #e05626, 1px 4px 6px #e6e2df;
+    }
+    
+
+    .start {
+        position: absolute;
+        top: 66%;
+        left: 60%;
+        width: 32vw;
+        padding: 10px 20px;
+        font-size: 6vw;
+        color: #299392;
+        outline: none;
+        border: 3px solid #299392;
+        background: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .start:hover {
+        background-color: #299392;
+        color:white;
+    }
+
+    img {
+            width: 29%;
+    }
+
+    a, a:link { 
+        color: #299392;
+        text-decoration: none; 
+    } 
+    a:hover { 
+        color:white;
+    } 
+
+    #pengsoo-loader {
+        position:absolute; 
+        height: 100%; 
+        width:100%; 
+        visibility: hidden;
+        text-align: center; 
+        background-color: rgb(178, 214, 161);
+        opacity:0;
+        transition: opacity 1s linear;
+    }
+
+</style>
+</head>
+<body>
+    
+
+
+<!-- 오프닝 시작html -->
+<!-- <div class="animsition"> -->
+    
+    <div class="opening">
+        <div class="hi">
+            <img src="./front.gif" alt="">
+            <img src="./front.gif" alt="">
+            <img src="./front.gif" alt="">
+        </div>
+        
+        <div class="title">
+           <!--  <div>Hello Pengsoo World</div> -->
+           <img src="helloPengsooWorld.png" style="width:800px;"> 
+        </div>
+        
+        <button class="start">Start</button>
+    </div>
+    <div id="pengsoo-loader">
+        <img src="pixel-pengsoo.svg" style="min-width:30px; max-width: 20%; display: block; margin-left:auto; margin-right: auto;margin-top: 10%;">
+        <img src="pixel-loader.svg" style="min-width:30px; max-width: 20%; display: block; margin: 0 auto;">
+    </div>
+</div>
+<!-- 오프닝 끝html -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<!-- <script src="animsition.min.js"></script> -->
+<script>
+    $(document).ready(function() {
+        $('.opening').css('opacity','1');
+    });
+
+    $('.start').on('click', function () {
+        $('.opening').css('opacity','0');
+        setTimeout(function() {
+            $('#pengsoo-loader').css('opacity','1').css('visibility','visible');
+        }, 500);
+        setTimeout(function() {
+            $('#pengsoo-loader').css('opacity','0');
+        }, 4000);
+        setTimeout(function() {
+            $(location).attr('href', 'home.html');
+        }, 5000);
+    });
+
+    
+    // $(window).bind('beforeunload', function(){
+        
+    //         setTimeout(() => {
+    //             $('#pengsoo-loader').css('visibility','visible')
+    //             .css('opacity','1')
+    //             .css('transition','opacity 2s linear');
+
+    //         }, 2000);
+    //     }
+
+
+    // });
+
+    // window.onload=loader;
+    // function loader() {
+    //     var loader=document.getElementById("pengsoo-loader");
+    //     //메인컨텐츠 클래스이름 수정하기
+    //     var mainContents=document.getElementById("mainContents");
+    //     setTimeout(() => {
+    //         loader.setAttribute("style","visibility: hidden; opacity: 0; transition: visibility 0s 2s, opacity 2s linear;");
+            
+    //         mainContents.setAttribute("style","visibility: visible; opacity: 1; transition: opacity 2s linear;")
+    //         setTimeout(function() {
+    //             document.getElementById("main").removeChild(loader);
+    //         }, 300);
+    //         //로링되는 초 수정하기
+    //     }, 1000);
+    // }//로더 js 끝
+</script>
+</body>
+</html>

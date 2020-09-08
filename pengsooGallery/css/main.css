@@ -1,0 +1,599 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
+
+body{
+    font-family: '210 오복상회';
+}
+
+#board{
+    width: 100%;
+}
+.c_group{
+    height: 1080px;
+}
+#main{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#container1{
+    background-image: url('../img/back.jpg');
+}
+/* #container2{
+    background-color: burlywood;
+} */
+#container3{
+    background-color: #f57665;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+/* #container6{
+    background-color: mediumpurple;
+} */
+#video{
+    text-align: center; 
+    height: 940px; 
+    /* background-color: #ffc7c7; */
+}
+
+/* 백 앤 탑 */
+.otherPages{
+    display: block;   
+    border: none;
+    height: 150vh;
+    width: 100vw;
+}
+
+#back{
+    position: fixed;
+    top:20px;
+    left:20px;
+    width:100px;
+    height:100px;
+    z-index: 5;
+}
+
+#MOVE_TOP_BTN{
+    font-family: '210 오복상회';
+    font-size: 20px;
+    position:fixed;
+    right:2%;
+    bottom:50px;
+    display:none;
+    z-index:999;
+    color:black;
+}
+
+/* 수평이미지 스크롤 */
+.scroll-slider {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.scroll-wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.scroll-slide {
+    flex: 1 0 50vw;
+    /* max-width: 50vw; */
+    height: 100%;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.item-container {
+    position: relative;
+}
+
+.item-image img {
+    width: 600px;
+}
+
+/* 코스튬 펭수 텍스트 */
+.costumeContainer {
+    /* background-color: #232323; */
+    background-color: #588C73;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.costumeContainer svg {
+    max-width: 90rem;   
+    width: 100%;
+    height: auto;
+    fill: none;
+    stroke: white;
+    stroke-width: 4;
+}
+
+.costumeContainer svg tspan > tspan {
+    stroke-dasharray: 1500;
+    stroke-dashoffset: -1500;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(1) {
+    animation: draw 600ms 15150ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(2) {
+    animation: draw 600ms 15300ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(3) {
+    animation: draw 600ms 15450ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(4) {
+    animation: draw 600ms 15600ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(5) {
+    animation: draw 600ms 15750ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(6) {
+    animation: draw 600ms 15900ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(7) {
+    animation: draw 600ms 16050ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(8) {
+    animation: draw 600ms 16200ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(9) {
+    animation: draw 600ms 16350ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(10) {
+    animation: draw 600ms 16500ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(11) {
+    animation: draw 600ms 16650ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(12) {
+    animation: draw 600ms 16800ms forwards;
+}
+
+.costumeContainer svg tspan > tspan:nth-of-type(13) {
+    animation: draw 600ms 16950ms forwards;
+}
+.costumeContainer svg tspan > tspan:nth-of-type(14) {
+    animation: draw 600ms 17100ms forwards;
+}
+
+@keyframes draw {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* 코스튬 펭수 갤러리 */
+.row{
+    margin: 0 30px 0 30px;
+    background-color: #f57665;
+}
+
+.imgFrame{
+    position: relative;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 75.09%
+}
+
+.imgFrame img{
+    display:block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: auto;
+    -webkit-filter: grayscale(100%);
+    filter: gray;
+}
+
+.card-type-2 {
+    border-radius: 3px;
+    background-color: #fff;
+    background-color: #fff;
+    border: 1px solid #d8d8d8;
+    border-bottom-width: 2px;
+    width:100%;
+    /* min-width:300px; */
+    padding: 8px;
+    margin-bottom:3%;
+}
+
+.card-type-2:hover img{
+    /* opacity:0.3 ;  */
+    transform: scale(1.3);
+    -webkit-filter: grayscale(0%);
+    filter: none;
+}
+
+.card-type-2 p{
+    text-align: center;
+    top: 40%;
+    left: 40%;
+    font-size: 40px;
+    font-family: '210 오복상회';
+    font-weight: bold;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    visibility : visible;
+}
+
+.card-type-2:hover p{
+    /* text-align: center;
+    top: 40%;
+    left: 40%;
+    font-size: 30px;
+    font-family: '210 오복상회';
+    font-weight: bold; */
+    visibility : hidden;
+}
+
+/* 명언 텍스트 */
+.container4 {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: block;
+    position: absolute;
+    max-width: 225px;
+}
+
+.button {
+    float: left;
+    position: relative;
+    bottom: -65px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    color: #e55643;
+    text-transform: uppercase;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.button span {
+    transform: skew(-10deg);
+    display: block;
+    float: left;
+    text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px;
+}
+
+h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 42px;
+    margin: 0;
+    line-height: 47px;
+    letter-spacing: 2px;
+}
+
+.title {
+    transform: translateX(-50%) rotate(-10deg);
+    display: block;
+    float: left;
+    left: 50%;
+    position: relative;
+}
+
+.title span {
+    transform: skew(-10deg);
+    display: block;
+    float: left;
+    text-shadow: #533d4a 1px 1px, #533d4a 2px 2px, #533d4a 3px 3px, #533d4a 4px 4px, #533d4a 5px 5px, #533d4a 6px 6px;
+    min-width: 10px;
+    min-height: 10px;
+    position: relative;
+}
+
+.title:nth-child(1) {
+    color: #e55643;
+}
+
+.title:nth-child(2) {
+    color: #2b9f5e;
+}
+
+.title:nth-child(3) {
+    color: #f1c83c;
+}
+
+#digitalText{
+    background: #b9e1dc;
+    text-align: center; 
+    padding-top: 25%; 
+}
+
+#digitalText h1{
+    font-family: '210 오복상회';
+    font-size: 100px;
+
+    text-shadow:
+        0 1px 0 hsl(174,5%,80%),
+        0 2px 0 hsl(174,5%,75%),
+        0 3px 0 hsl(174,5%,70%),
+        0 4px 0 hsl(174,5%,66%),
+        0 5px 0 hsl(174,5%,64%),
+        0 6px 0 hsl(174,5%,62%),
+        0 7px 0 hsl(174,5%,61%),
+        0 8px 0 hsl(174,5%,60%),
+
+        0 0 5px rgba(0,0,0,.05),
+        0 1px 3px rgba(0,0,0,.2),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.2),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0,0,0,.3);
+}
+
+/* 네비게이션 바 */
+.navbar {
+    position: fixed;
+    top: 10em;
+    left: 6em;
+    height: 175px;
+    z-index: 1;
+}
+
+.navbar ul {
+    padding: 0 1em;
+    list-style: none;
+}
+
+.navbar ul li {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.navbar ul li a {
+    font-size: 1.2em;
+    color: black;
+    text-decoration: none;
+    transition: all 0.1s;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 134%;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.progress-bar--increment {
+    background-color: #E74C5B;
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 0;
+    border-radius: 5px;
+}
+
+.progress-bar--circle {
+    position: absolute;
+    bottom: 5px;
+    left: -21px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.1s;
+}
+
+.progress-bar--circle.active {
+    background-color: #E74C5B;
+}
+
+.active {
+    color: #E74C5B !important;
+}
+
+footer {
+    height: 1000px;
+    width: 100%;
+}
+
+
+/* 동환님 마우스 오버 */
+/* setting up the full page */
+#mouseImg {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* layout of the columns */
+.cols {
+    width: 100%;
+    clear: both;
+}
+
+.cols .tile {
+    height: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+/* two columns layout */
+.cols.two .tile {
+    width: 50%;
+}
+
+/* three columns layout */
+.cols.three .tile {
+    width: 33%;
+}
+
+.cols.three .tile:last-of-type {
+    width: 34%;
+}
+
+/* four columns layout */
+.cols.four .tile {
+    width: 25%;
+}
+
+/* layout of the rows */
+.rows {
+    height: 100%;
+}
+
+/* two rows layout */
+.rows.two .cols {
+    height: 50%;
+}
+
+
+/* three rows layout */
+.rows.three .cols {
+    height: 33%;
+}
+
+.rows.three .cols:last-of-type {
+    height: 34%;
+}
+
+/* four rows layout */
+.rows.four .cols {
+    height: 25%;
+}
+
+/* some background images and decoration */
+.cols .tile {
+    opacity: 2;
+    background-size: cover;
+    position: relative;
+}
+
+.rows {
+    background: #7fcd91;
+}
+
+.tile .content {
+    position: relative;
+    top: 30%;
+    left: 50%;
+    width: 30%;
+    margin-left: -25%;
+}
+
+
+.tile {
+    text-align: center;
+    font-family: '210 오복상회';
+    font-size: 25px;
+    color: black;
+    opacity: 5;
+}
+
+/* animate mouse effect */
+.cols .tile {
+    transition: 2s;
+}
+
+.content img{
+    visibility: hidden;
+}
+
+.content:hover img{
+    opacity: 1;
+    /* font-size: 10em;
+    visibility: hidden; */
+    width: 300px;
+    height: 150px;
+    visibility: visible;
+}
+
+.content:hover p{
+    display:none
+}
+
+.cols.two:hover .tile {
+    width: 20%;
+}
+
+
+.cols.two:hover .tile:hover {
+    width: 20%;
+}
+
+.cols.three:hover .tile {
+    width: 20%;
+}
+
+.cols.three:hover .tile:hover {
+    width: 60%;
+}
+
+.cols.four:hover .tile {
+    width: 20%;
+}
+
+.cols.four:hover .tile:hover {
+    width: 40%;
+}
+
+.rows .cols {
+    transition: 1s;
+}
+
+.rows.two:hover .cols {
+    height: 20%;
+}
+
+.rows.two:hover .cols:hover {
+    height: 80%;
+}
+
+.rows.three:hover .cols {
+    height: 20%;
+}
+
+.rows.three:hover .cols:hover {
+    height: 60%;
+}
+
+.rows.four:hover .cols {
+    height: 20%;
+}
+
+.rows.four:hover .cols:hover {
+    height: 40%;
+}
+
+#icon {
+    position: relative;
+    left:-80px
+}

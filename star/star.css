@@ -1,0 +1,60 @@
+body {
+  overflow: hidden;
+}
+
+#canvas {
+position: fixed;
+pointer-events: none;
+left: 0;
+top: 0;
+width: 100vw;
+height: 100vh;
+z-index: 900;
+transition: opacity 1.2s ease;
+}
+
+#canvas.faded {
+opacity: 0;
+}
+
+#canvasUnder {
+position: fixed;
+pointer-events: none;
+left: 0;
+top: 0;
+overflow: hidden;
+width: 100vw;
+height: 100vh;
+z-index: 999;
+}
+
+#canvasUnder .canvasUnderReactingBlock,
+#canvasUnder .canvasUnderReactingBlock.move1 {
+display: inline-block;
+line-height: 0.2em;
+margin-top: 0;
+box-sizing: border-box;
+pointer-events: all;
+width: 12.5vw;
+height: 12.5vw;
+padding: 0;
+-webkit-border-before-width: 0 !important;
+-webkit-border-after-width: 0 !important;
+z-index: 999;
+}
+
+@media(max-width: 768px) {
+#canvas {
+  opacity: 0;
+}
+#canvasUnder .canvasUnderReactingBlock,
+#canvasUnder .canvasUnderReactingBlock.move1 {
+  display: none;
+}
+}
+
+#canvasUnder .canvasUnderReactingBlock.reaction,
+#canvasUnder .canvasUnderReactingBlock.reaction.move1 {
+pointer-events: none;
+opacity: 0.6;
+}

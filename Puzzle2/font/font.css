@@ -1,0 +1,56 @@
+
+@font-face{
+    font-family:'210 오복상회';
+    src: url('fonts/210오복상회R.ttf') format('truetype');
+    font-style: normal;
+    font-weight:normal;
+}
+
+@font-face{
+    font-family: '여기어때 잘난체';
+    src: url('fonts/Jalnan.ttf') format('truetype');
+    font-style: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family:  '배달의민족 을지로체 TTF';
+    src: url('fonts/BMEULJIROTTF.ttf') format('truetype');
+
+}
+
+@font-face{
+    font-family:  '배달의민족 한나체 Pro';
+    src: url('fonts/BMHANNAPro.ttf') format('truetype');
+
+}
+
+@font-face{
+    font-family:  'CHILLER';
+    src: url('fonts/CHILLER.ttf') format('truetype');
+
+}
+
+
+
+
+p, h2{
+    font-family: '210 오복상회';
+   
+    
+}
+
+body{
+    font-family: '여기어때 잘난체';
+   
+}
+
+h3{
+    font-family: '배달의민족 을지로체 TTF';
+
+}
+
+h1{
+    font-family: '배달의민족 한나체 Pro';
+ 
+}
+

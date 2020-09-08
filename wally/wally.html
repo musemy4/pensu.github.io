@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://yourwebsite.com/script.js"></script>
+    
+    <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto");
+    * {
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif; }
+
+      .menu {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(45deg, #e6e2df 80%, #c2c1bd 100%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+      }
+      .menu h1 {
+        text-transform: uppercase;
+        transform: translate(-50%, -50%) skew(0deg) rotate(0deg);
+        font-size: 10vw;
+        top: 30%;
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        font-weight: 900;
+        color: rgba(175, 169, 170, 0.5);
+        text-shadow: 1px 4px 6px #e6e2df, 0 0 0 #66303a, 1px 4px 6px #e6e2df;
+        white-space: nowrap; 
+      }
+
+      .menu h1::before {
+        content: attr(data-heading);
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 51%;
+        color: #fbf7f4;
+        text-shadow: 2px -1px 6px transparent;
+        transition: all 250ms ease-in-out;
+      }
+
+      .menu h1::after {
+        content: attr(data-heading);
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #fbf7f4;
+        transform: skew(0) scale(1, 1);
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+        text-shadow: 2px -1px 6px transparent;
+        transition: all 250ms ease;
+        backface-visibility: hidden;
+      }
+
+      .menu h1:hover::after {
+        transform: skew(1deg) scale(1, 0.8);
+        text-shadow: 2px -1px 6px rgba(0, 0, 0, 0.3);
+        color: #d3cfcc;
+      }
+
+
+      .menu .difficult-select {
+        margin: 20px 0; 
+        border: 1px solid #fff;
+        padding: 5px 15px;
+        font-size: 15px; 
+      }
+      .menu .score-box {
+        display: none;
+        color: #fff;
+        margin: 0 0 10px 0; 
+      }
+      .menu #startBtn {
+        width: 200px;
+        padding: 10px 20px;
+        font-size: 25px;
+        color: #fff;
+        outline: none;
+        border: 1px solid #fff;
+        background: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px; 
+      }
+
+      .menu #startBtn:hover {
+        background: #fff;
+        color: #000; 
+      }
+
+    .board {
+      display: none;
+      background: url("./background1.jpg");
+      min-height: 100vh;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+      background-repeat: no-repeat;
+    
+    }
+
+    .board .scope {
+      display: none;
+      position: absolute;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid #fff;
+      box-shadow: 0 0 0 9999px black;
+      z-index: 3; 
+    }
+    .board .time-box {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #fff;
+      padding: 10px 20px;
+    z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+    }
+
+    .board .wally {
+      display: none;
+      position: absolute;
+      width: 80px;
+      height: 120px;
+      background: url("./0.png");
+      background-size: cover;
+      cursor: pointer; 
+      z-index: 5;
+    }
+
+      
+  /*# sourceMappingURL=1.css.map */
+
+      
+   
+    </style>
+</head>
+<body>
+    <section class="menu">
+        <h1 contenteditable data-heading="FindPengsu">FindPengsu</h1>
+        <select class="difficult-select" name="select">
+          <option value="easy">Easy</option> 
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <p class="score-box"></p>
+        <button id="startBtn">Start</button>
+      </section>
+      
+      <section class="board">
+        <div class="time-box"></div>
+        <div class="scope"></div>
+      </section>
+
+
+
+
+      <script>
+          //텍스트효과
+          var h1 = document.querySelector("h1");
+
+          h1.addEventListener("input", function() {
+          this.setAttribute("data-heading", this.innerText);
+          });
+
+
+
+
+
+          //게임
+          var boardBackgrounds = ["./background1.jpg","./background2.jpg"];
+          var scope = document.querySelector('.scope');
+          var board = document.querySelector('.board');
+          var wally = document.createElement('div');//월리를 만든다
+          var startBtn = document.getElementById('startBtn');
+          var menu = document.querySelector('.menu');
+          var timeBox = document.querySelector('.time-box');
+          var time = "Your time: 0s";
+          var timeInterval;
+          var gameStart = false;
+
+          var difficultSelect = document.querySelector('.difficult-select');
+          var difficultLVL = 'medium';
+          var scoreBox = document.querySelector('.score-box');
+          var score = 0;
+
+          startBtn.addEventListener('click', function(){
+            startGame()
+          })
+
+          board.addEventListener('mousemove', function(e){
+              scope.style.transform = 'translateY('+(e.clientY-0)+'px)';
+              scope.style.transform += 'translateX('+(e.clientX-0)+'px)';
+          },false);
+
+          //월리가 눌릴때
+          
+          wally.addEventListener('click', function(){
+            backToMenu()
+          });
+
+          function showScore(){
+          score = 0;
+          score = time;
+          scoreBox.style.display = 'block';
+          scoreBox.innerHTML = "Your score: " + score + "s";
+          }
+
+          function startGame(){
+          settings();
+          gameStart = true;
+          setMenuHide();
+          setBoardVisible();
+          setScopeVisible();
+          createBoardBg();
+          createWally();
+          countTime();
+          }
+
+          function backToMenu(){
+          gameStart = false;
+          clearInterval(timeInterval);//시간초 재는걸 끝냄
+          setBoardHide();
+          setScopeHide();
+          setMenuVisible();
+          showScore()
+          }
+
+          function setMenuHide(){
+          menu.style.display = 'none';
+          return;
+          }
+
+          function setMenuVisible(){
+          menu.style.display = 'flex';
+          return;
+          }
+
+          function setBoardVisible(){
+          board.style.display = 'block';
+          return;
+          }
+
+          function setBoardHide(){
+          board.style.display = 'none';
+          return;
+          }
+
+          function setScopeVisible(){
+          scope.style.display = 'block';
+          return;
+          }
+
+          function setScopeHide(){
+          scope.style.display = 'none';
+          return;
+          }
+
+          function createBoardBg(){
+          var randomBgNumber = Math.floor(Math.random() * boardBackgrounds.length) + 0
+          var randomBg = boardBackgrounds[randomBgNumber]
+          board.style.backgroundImage = "url(" + randomBg + ")";
+          }
+
+          function countTime(){
+          time = 0;
+          timeBox.innerHTML = time
+          timeInterval = setInterval(function(){
+              time ++;
+              timeBox.innerHTML = "Your time: " + time + "s";
+          }, 1000)
+          }
+
+          function settings(){
+          difficultLVL = difficultSelect.options[difficultSelect.selectedIndex].value
+          switch(difficultLVL) {
+              case "easy":
+                  scope.style.top = '-100px';
+                  scope.style.left = '-100px';
+                  scope.style.width = '200px';
+                  scope.style.height = '200px';
+                  break;
+              case "medium":
+                  scope.style.top = '-75px';
+                  scope.style.left = '-75px';
+                  scope.style.width = '150px';
+                  scope.style.height = '150px';
+                  break;
+              case "hard":
+                  scope.style.top = '-45px';
+                  scope.style.left = '-45px';
+                  scope.style.width = '100px';
+                  scope.style.height = '100px';
+                  break;
+              }
+          }
+
+          function createWally(){
+          wally.classList.add('wally');
+          board.appendChild(wally);//월리를 board의 자손으로 등록
+          
+          var boardCoordInfo = board.getBoundingClientRect();//위치정보 등록
+          var WallyCoordInfo = wally.getBoundingClientRect();
+          
+          wallyRandomX = Math.random() * (boardCoordInfo.width - WallyCoordInfo.width - 50);
+          wallyRandomY = Math.random() * (boardCoordInfo.height - WallyCoordInfo.height - 50);
+          //wallyRotate = Math.floor(Math.random() * 360) + 1
+          
+          wally.style.top = wallyRandomY + 'px';
+          wally.style.left = wallyRandomX + 'px';
+          //wally.style.transform = "rotate("+ wallyRotate +"deg)";
+          wally.style.display = 'block';
+          }; 
+
+      </script>
+</body>
+</html>

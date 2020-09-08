@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+    <style>
+        html {
+            background: url("./icon/curtain.png") no-repeat center center
+                fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .outlined-font {
+            font-family: 'Typo_SsangmunDongB';
+            color: #f0e588;
+            text-shadow: 1px 1px 1px white, -1px -1px 1px #000, -1px 1px 1px #000, 1px -1px 1px white;
+        }
+
+        .normal-font {
+            font-family:'Typo_SsangmunDongB';
+            color: black;
+            font-size: 15px;
+            text-shadow: 1px 1px 1px white;
+        }
+        .nom-font {
+            font-family:'Typo_SsangmunDongB';
+            color: black;
+            font-size: 15px;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin: 0.1em;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin: 0.5em 0 0.25em;
+        }
+
+        h2:first-of-type {
+            margin-top: 0.5em;
+            color:white;
+        }
+
+        h3:first-of-type{
+            font-family:'210 오복상회';
+            text-shadow: 1px 1px 1px #000, -1px -1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000;
+            color:#8a611a;
+            font-style: unset;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        tr {
+            height: 20px;
+        }
+
+        td {
+            width: 20px;
+        }
+
+        input[type="number"] {
+            width: 6em;
+            border: none;
+        }
+
+        #color-picker {
+            cursor: pointer;
+            border: none;
+        }
+
+        /* 다시그리기 */
+        #clear {
+            background-color: #4d7029;
+            color: #fff;
+            border: 1px solid #fff;
+            outline: none;
+            width: 80px;
+            cursor: pointer;
+        }
+
+        #clear:hover {
+            background-color: #66c902;
+        }
+
+        /* 제출 */
+        #submit {
+            background-color: #f0cd03;
+            color: #fff;
+            border: 1px solid #fff;
+            outline: none;
+            width: 80px;
+            cursor: pointer;
+        }
+
+        #submit:hover {
+            background-color: #ab7120;
+        }
+
+        /* clear버튼 */
+        #quick-fill {
+            background-color: #4d7029;
+            color: #fff;
+            border: 1px solid #fff;
+            outline: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        #quick-fill:hover {
+            background-color: #66c902;
+        }
+
+        #save {
+            position:absolute;
+            background-color: none;
+            color: black;
+            border: 1px solid #fff;
+            outline: none;
+            left:64%;
+            top:22.1%;
+            width: 90px;
+            height: 23px;
+            cursor: pointer;
+        }
+
+        #save:hover {
+            background-color: lightgray;
+        }
+
+        /* 그리기도구랑 canvas */
+        .container {
+            position:absolute;
+            top:30%;
+            left:35%;
+            display: flex;
+        }
+
+        .tool_menu {
+            position:absolute;
+            left:-40%;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            cursor:move;
+        }
+
+      
+
+        .right {
+            flex: 1;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 36px;
+            height: 36px;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+        }
+
+        .paint {
+            background-color: #FFF;
+            color: #fff;
+            outline: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid #888888;
+        }
+
+        .paint img {
+            width: 25px;
+            height: 25px;
+            margin: 5px 0;
+        }
+
+        .erase {
+            background-color: #FFF;
+            color: #fff;
+            outline: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid #888888;
+        }
+
+        .erase img {
+            width: 25px;
+            height: 25px;
+            margin: 5px 0;
+        }
+
+        .fill {
+            background-color: #FFF;
+            color: #fff;
+            outline: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid #888888;
+        }
+
+        .fill img {
+            width: 25px;
+            height: 25px;
+            margin: 5px 0;
+        }
+
+        .active_button {
+            background-color: red;
+        }
+        
+      
+
+</style>
+</head>
+
+<body>
+    <br>
+    <h1 class="outlined-font">천하제일 펭수그리기 대회</h1>
+	<h2 class="outlined-font">픽셀 그림을 그려보세요!</h2>
+    <br><br>
+
+	
+	<form id="size-picker" class="normal-font">
+		세로 :
+        <input type="number" id="input-height" name="height" min="1" value="1" class="normal-font"> 
+        가로 :
+		<input type="number" id="input-width" name="width" min="1" value="1" class="normal-font">
+		<input type="submit" id="submit" value="canvas" class="nom-font">
+        <input type="button" id="clear" value="clear" class="nom-font">
+	</form>
+    <input type="button" id="save" value="savefile" class="nom-font">
+
+	<div class="container">
+		<div class="tool_menu" id="draggable"><!--옮길수있다-->
+			<input type="color" id="color-picker">
+			<button class="paint"><img src="./icon/brush.jpg"></button>
+			<button class="erase"><img src="./icon/eraser.jpg"></button>
+			<button class="fill"><img src="./icon/paint.jpg"></button>
+		</div>
+
+		<div class="grid" id="downloadImage">
+			<table id="pixel-canvas"></table>
+		</div>
+		<div class="right"></div>
+	</div>
+
+	<h3 class="outlined-font">클릭하거나 드래그 하세요</h3>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script src="./FileSaver.js"></script>
+
+<script src="./html2canvas.js"></script>
+<script>
+
+    //draggable 시작
+   dragElement(document.getElementById("draggable"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+// draggable 끝
+
+
+// Main function to run when document is fully loaded.
+    $(document).ready(function() {
+	// Set all necessary variables
+        let gridHeight, gridWidth, color, grid, isColoring, isErasing, fillBtn, paintBtn, eraseBtn, paintingMode, eraseingMode;
+        isColoring = false;
+        isErasing = false;
+        gridHeight = $("#input-height");
+        gridWidth = $("#input-width");
+        grid = $("#pixel-canvas");
+        color = $("#color-picker").val();
+
+        fillBtn = $(".fill");
+        paintBtn = $(".paint");
+        eraseBtn = $(".erase");
+
+        paintingMode = false;
+        erasingMode = false;
+            
+            // When the window first loads, let's create a default 10 x 10 table
+        $(window).on("load", function() {
+            gridHeight.val(10);
+        gridWidth.val(10);
+        makeGrid();
+    });
+
+	// 제출버튼
+	$("#submit").click(function(e) {
+       // Prevent page from refreshing
+		e.preventDefault();
+		// Clear rows from table if any exist
+		grid.children().remove();
+		// 새로운 그림판이 만들어짐
+        makeGrid();
+
+	});
+    
+    
+
+	// 테이블로 그리드를 만든다
+	function makeGrid() {
+		// Temporary rows and cells
+		let tr, td;
+		// Create i amount of table rows
+		for (let i = 0; i < gridHeight.val(); i++) {
+			tr = $("<tr></tr>");
+			// Create x amount of table cells and append to rows
+			for (let x = 0; x < gridWidth.val(); x++) {
+				td = $("<td></td>");
+				tr.append(td);
+			}
+			// Append rows to the main table
+			grid.append(tr);
+			
+			// Create white background for table and assign border
+			grid.children().css("background-color", "#FFF");
+			grid.css("outline", "5px solid #94d602");
+		}
+	}
+
+	// Call the coloring function
+	colorGrid();
+
+	// Coloring function  
+	function colorGrid() {
+		// Runs when mouse is pressed and held down
+		grid.on("mousedown", "td", function(e) {
+			// Check if left click and painting mode then set coloring to true and color the td
+			if (paintingMode && e.which == 1) {
+				isColoring = true;
+				$(this).css("background-color", color);
+			// Check if left click and erasing mode then set erasing to true and color the td
+			} else if (erasingMode && e.which == 1) {
+				isErasing = true;
+				$(this).css("background-color", "#FFF");
+			}
+		});
+		
+    // Check if mouse is released anyplace in document and set both 			coloring and erasing to false
+		$(document).mouseup(function() {
+			isColoring = false;
+			isErasing = false;
+		});
+		
+		// Start coloring or erasing when the mouse moves
+		grid.on("mousemove", "td", function() {
+			// If coloring use selected color from color input
+			if (isColoring) {
+				$(this).css("background-color", color);
+			// If erasing color with white
+			} else if (isErasing) {
+				$(this).css("background-color", "#FFF");
+			}
+		});
+	}
+
+	// 컬러값얻기
+	$("#color-picker").change(function() {
+		color = $("#color-picker").val();//컬러의 value값을 얻는다
+	});
+
+	// When clear button is clicked set cell background to white
+	$("#clear").click(function() {
+		grid.children().find("td").css("background-color", "#FFF");
+		fillBtn.removeClass("active_button");
+    paintBtn.addClass("active_button");
+    eraseBtn.removeClass("active_button");
+    paintingMode = true;
+    erasingMode = false;
+	});
+	
+	// When paint is clicked set paintingMode = true
+	paintBtn.click(function () {
+    paintingMode = true;
+    erasingMode = false;
+    $(this).addClass("active_button");
+    fillBtn.removeClass("active_button");
+    eraseBtn.removeClass("active_button");
+  });
+
+	// When paint is clicked set erasingMode = true
+  eraseBtn.click(function () {
+    erasingMode = true;
+    paintingMode = false;
+    $(this).addClass("active_button");
+    fillBtn.removeClass("active_button");
+    paintBtn.removeClass("active_button");
+  });
+	
+	// When fill button is clicked fill all cells' background with 				selected color
+	fillBtn.click(function () {
+    grid.children().find("td").css("background-color", color);
+    $(this).addClass("active_button");
+    eraseBtn.removeClass("active_button");
+    paintBtn.removeClass("active_button");
+    paintingMode = false;
+    erasingMode = false;
+  });
+
+	//오른쪽 클릭은 못한다
+	// $(document).contextmenu(function() {
+	// 	return false;
+	// });
+});
+
+
+
+//파일저장
+$(function(){
+
+$("#save").click(function() { 
+
+     html2canvas($("#downloadImage"), {
+
+         onrendered: function(canvas) {
+
+             canvas.toBlob(function(blob) {
+
+                 saveAs(blob, 'image.png');
+
+             });
+
+         }
+
+     });
+
+ });
+
+});
+
+</script>
+
+</html>
+</body>
+</html>

@@ -1,0 +1,108 @@
+html {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+ }
+ 
+ *,
+ *:before,
+ *:after {
+	box-sizing: inherit;
+ }
+ 
+ body {
+	background: #2F2F2F;
+	color: #eee;
+	font-family: 'Typo_SsangmunDongB';
+	text-align: center;
+ }
+ .game{
+	 position: absolute;
+	 left:20%;
+	 top:20%;
+ }
+ 
+ /* 슬롯 안 이미지를 위해 mainimage 클래스로 분리함 */
+ .mainimage{
+	 position: absolute;
+	 left:50%;
+	 width:400px;
+	 height: 300px;
+	 margin:120px 50px;
+ }
+ #sun{
+	 display:none;
+	 position: absolute;
+	 left:50%;
+	 width:400px;
+	 height: 300px;
+	 top:-1%;
+ }
+ 
+ .slots {
+	overflow: auto;
+	width: 310px;
+	margin: auto;
+ }
+ 
+ .slots span {
+	color: #000;
+	cursor: default;
+	background: #C0C0C0;
+	border-radius: 5px;
+	border: 1px solid #333;
+	box-shadow: 0px 0px 10px #000;
+	float: left;
+	font-size: 64px;
+	font-weight: bold;
+	height: 100px;
+	line-height: 100px;
+	margin-left: 5px;
+	width: 100px;
+	-webkit-transition: all 0.67s ease;
+	transition: all 0.67s ease;
+ }
+ 
+ .slots span.icon1 {
+	width:50px;
+	height:50px;
+ }
+ 
+ .slots span.icon2 {
+	width:50px;
+	height:50px;
+ }
+ 
+ .slots span.icon3 {
+	width:50px;
+	height:50px;
+ }
+ 
+ .slots span.spin {
+	transform: rotateY(720deg);
+ }
+ 
+ .slots span:first-child {
+	margin-left: 0;
+ }
+ 
+ a {
+	background: lightblue;
+	border-radius: 5px;
+	border: 1px solid lightskyblue;
+	box-shadow: 0px 0px 10px #111;
+	color: #fff;
+	display: inline-block;
+	font-weight: bold;
+	line-height: 40px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0px 1px 2px #333;
+	width: 100px;
+ }
+ 
+ a:hover {
+	box-shadow: 0px 0px 20px #111;
+	background-color: lightblue;
+	border-color: lightseagreen;
+	color: #eee;
+ }

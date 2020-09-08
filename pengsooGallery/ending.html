@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+
+    <style>
+        body {
+            overflow: hidden;
+            text-align: center;
+            /* color: #fff; */
+            background-color: #ffc7c7;
+            font-family: '210 오복상회';
+        }
+
+        a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        /* h1 {
+            font-family: 'Courgette', cursive;
+            color: #0D5212;
+        } */
+
+        .wrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            max-width: 90%;
+            margin: 20px auto 0;
+        }
+
+        .box {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 25%;
+            flex: 1 1 25%;
+            margin: 50px 10px 10px 25px;
+            position: relative;
+        }
+
+        img {
+            width: 280px;
+            height: 200px;
+            -webkit-box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.75);
+        }
+
+        .overlay {
+            position: absolute;
+            margin: 0;
+            top: 0;
+            height: 200px;
+            z-index: 98;
+            background: #ffd944;
+        }
+
+        .ovrl-left {
+            width: 160px;
+            left: 50%;
+            -webkit-box-shadow: 9px 0px 19px 0px rgba(105, 109, 122, 1);
+            box-shadow: 9px 0px 19px 0px rgba(105, 109, 122, 1);
+            border-left: 0.5px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .ovrl-right {
+            width: 160px;
+            right: 50%;
+            -webkit-box-shadow: -9px 0px 19px 0px rgba(105, 109, 122, 1);
+            box-shadow: -9px 0px 19px 0px rgba(105, 109, 122, 1);
+        }
+
+        .locker {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: #fff;
+            top: 43%;
+            left: 48%;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            z-index: 99;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        i.arrow {
+            font-size: 0.8em;
+            color: #bcbcbc;
+        }
+
+        .move-right {
+            -webkit-animation-name: myRight;
+                    animation-name: myRight;
+            -webkit-animation-duration: 0.5s;
+                    animation-duration: 0.5s;
+            -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+        }
+
+        .move-left {
+            -webkit-animation-name: myLeft;
+                    animation-name: myLeft;
+            -webkit-animation-duration: 1.3s;
+                    animation-duration: 1.3s;
+            -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+        }
+
+        @-webkit-keyframes myRight {
+            0% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 80%;
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        @keyframes myRight {
+            0% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 80%;
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        @-webkit-keyframes myLeft {
+            0% {
+                right: 50%;
+                opacity: 1;
+            }
+            100% {
+                right: 80%;
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        @keyframes myLeft {
+            0% {
+                right: 50%;
+                opacity: 1;
+            }
+            100% {
+                right: 80%;
+                opacity: 0;
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><br><br>Click Me!</h1>
+
+    <div class="wrapper">
+        <!-- 1,9,2,3,5,4,7,8,6, -->
+      <div class="box item-1"><img src="./img/end1.jpg" alt="">
+        <div class="overlay ovrl-left ovrl-1"></div>
+        <div class="overlay ovrl-right ovrl-1"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-2"><img src="./img/end9.jpeg" alt="">
+        <div class="overlay ovrl-left ovrl-2"></div>
+        <div class="overlay ovrl-right ovrl-2"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-3"><img src="./img/end2.jpg" alt="">
+        <div class="overlay ovrl-left ovrl-3"></div>
+        <div class="overlay ovrl-right ovrl-3"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-4"><img src="./img/end3.jpg" alt="">
+        <div class="overlay ovrl-left ovrl-4"></div>
+        <div class="overlay ovrl-right ovrl-4"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-5"><img src="./img/end5.jpeg" alt="">
+        <div class="overlay ovrl-left ovrl-5"></div>
+        <div class="overlay ovrl-right ovrl-5"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-6"><img src="./img/end4.jpg" alt="">
+        <div class="overlay ovrl-left ovrl-6"></div>
+        <div class="overlay ovrl-right ovrl-6"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-7"><img src="./img/end7.jpg" alt="">
+        <div class="overlay ovrl-left ovrl-7"></div>
+        <div class="overlay ovrl-right ovrl-7"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-8"><img src="./img/end8.jpeg" alt="">
+        <div class="overlay ovrl-left ovrl-8"></div>
+        <div class="overlay ovrl-right ovrl-8"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+      <div class="box item-9" style="z-index:99;"><img id="end" src="./img/end6.jpg" alt="">
+        <div class="overlay ovrl-left ovrl-9"></div>
+        <div class="overlay ovrl-right ovrl-9"></div>
+        <div class="locker"><i class="arrow fa fa-arrows-h" aria-hidden="true"></i></div>
+      </div>
+  
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $(".box").on("mousedown", function(e) {
+                const gate = $(this).children("div");
+                $(this).children(".locker").hide();
+                for (var i = 0; i < gate.length; i++) {
+                    if ($(gate[i]).hasClass("ovrl-left")) {
+                        $(gate[i]).toggleClass("move-right");
+                    }
+                    if ($(gate[i]).hasClass("ovrl-right")) {
+                        $(gate[i]).toggleClass("move-left");
+                    }
+                }
+                $(this).off();
+
+                if($(".item-9").click(function(){
+                    $("#end").animate({
+                        height: '+=550px',
+                        width: '+=750px'
+                    }),
+                    $(".item-9").animate({
+                        top : '-800px',
+                    });
+
+                }));
+
+            });
+
+        });
+    </script>
+  </body>
+</html>

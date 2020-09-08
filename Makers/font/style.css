@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+p.typing-txt {
+  display: none;
+  font-size: 100px;
+}
+
+.typing {
+  position: relative;
+  display: inline-block;
+  animation-name: cursor;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+  border-right: 1px solid #ccc;
+}
+
+@keyframes cursor {
+  0% {
+    border-right: 1px ;
+  }
+  50% {
+    border-right: 1px ;
+  }
+  100% {
+    border-right: 1px ;
+  }
+}

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PengWorld</title>
+    <link rel="stylesheet" href="front.css">
+    <link rel="stylesheet" href="menustyle.css">
+    <link href="./font/font.css" rel="stylesheet" type="text/css">
+    
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        /*슬라이더시작*/   
+           
+        body {
+            background-color: white;
+            font-family: '210 오복상회';
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+        }
+        
+        h2{
+            font-family: '210 오복상회';
+        }
+
+        header {
+            position:absolute;
+            background: none;
+            height: 80px;
+        }
+
+        
+        .logo {            
+            max-width: 100px;
+            position: relative;
+            z-index: -1;
+        }
+        .logo .legends {
+            font-family: 'Shadows Into Light', cursive;
+            position: absolute;
+            color: #e9bc00;
+            bottom: 20px;
+            left: 60%;
+        }
+
+        img{
+            cursor: pointer;
+        }
+
+        .nav{
+            position:absolute;
+            width:100%;
+            height:70%;
+            top:100px;
+            z-index:-1;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: space-between;
+            z-index:1;
+            padding: 0;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        .nav-item {
+            display: flex;
+            background-color: #000;
+            height: calc(100vh - 80px);
+            width: 35%;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            align-items: center;
+            filter: grayscale(100%);
+        }
+        @media screen and (max-width: 768px) {
+            .nav-item {
+                width: 100%;
+                height: 200px;
+            }
+            .nav-item:hover {
+                height: 350px;
+            }
+        }
+        .nav-item .nav-item-bg {
+            height: 100vh;
+            width: 100%;
+            display: block;
+            position: absolute;
+        }
+        .nav-item:nth-child(1) .nav-item-bg {
+           background: url("./0.jpg")  no-repeat bottom center/cover;
+        }
+        .nav-item:nth-child(2) .nav-item-bg {
+           background: url('./1.jpg') no-repeat center bottom/cover;
+        }
+        .nav-item:nth-child(3) .nav-item-bg {
+           background: url('./2.jpg') no-repeat center center/cover;
+        }
+        .nav-item:nth-child(4) .nav-item-bg {
+           background: url('./3.jpg') no-repeat center center/cover;
+        }
+        .nav-item .nav-item-content {
+            color: #fff;
+            margin-left: -70px;
+            opacity: 0.3;
+            transition: all 0.3s ease-in-out;
+            filter: blur(1px);
+        }
+        .nav-item .nav-item-content h2 {
+            font-size: 120px;
+            font-weight: 900;
+            line-height: 0.9em;
+            margin: 0 0 30px;
+            text-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        @media screen and (max-width: 980px) {
+            .nav-item .nav-item-content h2 {
+                font-size: 70px;
+            }
+        }
+        .nav-item:hover {
+            width: 100%;
+            filter: none;
+        }
+        .nav-item:hover .nav-item-content {
+            margin-left: 50px;
+            opacity: 1;
+            filter: blur(0px);
+        }
+        .nav-item:hover button {
+            margin-left: 0;
+            opacity: 1;
+        }
+        @media screen and (max-width: 768px) {
+            .nav-item .nav-item-bg {
+                background-size: 70% !important;
+                background-position: center right !important;
+            }
+        }
+        img {
+         max-width: 100%;
+        }
+        .yellowBtn {
+            padding: 15px 30px;
+            background-color: #ffd31d;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 50px;
+            opacity: 0;
+            outline: 0;
+            margin-left: -60px;
+            transition: margin 0.5s ease-in-out, opacity 0.5s ease-in-out, background-color 0.2s ease;
+        }
+        button:hover {
+            background-color: #d0a700;
+        }
+        /*슬라이더끝*/
+
+        
+        /* 사이드 메뉴바 시작 */
+        .container {
+            position: fixed;
+            top: 0px;
+        }
+
+        /* 삼선 메뉴바 버튼 */
+        /* .toggle-collapse {
+        } */
+
+        #navID {
+            right: -25%;
+           
+        }
+
+        /* 사이드 메뉴바 끝 */
+
+        a{
+            font-family: '210 오복상회';
+        }
+
+        /* popup 효과 style 시작 */
+   .poppoppop {
+        width: 100%;
+        height: 100vh;
+        display: none;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    /* 팝업 기능 넣으려면 poppoppop-article 마다 이렇게 3줄씩 추가해야함 */
+    #poppoppop-article:target {
+        display: flex;
+    }
+    /* 팝업 기능 넣으려면 poppoppop-article 마다 이렇게 3줄씩 추가해야함 끝 */
+
+
+    .poppoppop:before {
+            content: "";
+            box-sizing: border-box;
+            width: 50%;
+        /* 팝업창 뜰때 보이는 커텐같은 영역 색상. 마지막 숫자가 불투명도 */
+
+            /* 쨍노랑색 스타일 */
+            background-color: rgb(254, 189, 34);
+
+            /* 검은색 불투명 스타일 */
+            /* background-color: rgb(0, 0, 0, 0.3); */
+
+            position: fixed;
+            left: 25%;
+            top: 50%;
+            will-change: height, top;
+            animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+        }
+
+
+    .poppoppop:after {
+            content: "";
+            width: 0;
+            height: 2px;
+
+            /* 번쩍 나타나는 선 색상 */
+            /* background-color: rgb(212, 71, 71);*/
+
+            will-change: width, opacity;
+            animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -1px;
+        }
+
+    /* 선긋는 애니메이션 */
+    @keyframes line-animation {
+
+        0% {
+            width: 0;
+            opacity: 1;
+        }
+
+        99% {
+            width: 100%;
+            opacity: 1;
+        }
+
+        100% {
+            width: 100%;
+            opacity: 0;
+        }
+    }
+
+    /* 창문처럼 열리는 애니메이션 */
+    @keyframes open-animation {
+
+        0% {
+            height: 0;
+            top: 50%;
+        }
+
+        100% {
+            height: 100vh;
+            top: 0;
+        }
+    }
+
+
+    .poppoppop__block {
+            
+            position: absolute;
+            top:5%;
+            left:5%;
+
+            width: 90%;
+            height: 90%;
+            
+
+            /* margin: auto; */
+            overflow: hidden;
+            animation: fade .5s ease-out 1.3s both;
+        }
+
+        @keyframes fade {
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .poppoppop__close {
+            width: 3.2rem;
+            height: 3.2rem;
+            text-indent: -9999px;
+
+            position: fixed;
+            top: 10px;
+            right: 25%;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+        }
+
+         @media screen and (min-width: 768px) {
+
+            html {
+                font-size: 62.5%;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+            html {
+                font-size: 50%;
+            }
+        }
+
+        iframe {
+            display:block;
+            width:100%; 
+            height: 100%;
+            /* height: 100vh;
+            width: 100vw; */
+        }
+    /* popup style 끝 */
+
+    
+
+
+</style>
+</head>
+<body>
+    <!-- 홈로고 시작 -->
+    <header>
+        <div class="logo">
+            <img src="./home.png" alt="" onclick="location.href='./[main]index.html';">
+        </div>
+    </header>
+<!-- 홈로고 끝 -->
+
+<!-- 메인 슬라이드 시작 -->
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <div class="nav-item-bg"></div>
+                <div class="nav-item-content">
+                    <h2>Interactive<br>Works </h2>
+                    <button class="yellowBtn" onclick="location.href='./effect01.html';">GOGO</button>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <div class="nav-item-bg"></div>
+                <div class="nav-item-content">
+                    <h2>Gallery</h2>
+                    <button class="yellowBtn" onclick="location.href='./pengsooGallery/galleryMain.html';">LEGO</button>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <div class="nav-item-bg"></div>
+                <div class="nav-item-content">
+                    <h2>Mini<br>Games</h2>
+                    <button class="yellowBtn" onclick="location.href='./effect03.html';">GOGO</button>
+                </div>
+            </li>
+
+      <!-- <li class="nav-item">
+         <div class="nav-item-bg"></div>
+         <div class="nav-item-content">
+            <h2>Gallery </h2>
+            <button class="yellowBtn">CHECKIT!</button>
+         </div>
+      </li> -->
+   </ul>
+</nav>
+<!-- 메인 슬라이드 끝 -->
+
+<!-- 사이드메뉴바 시작 -->
+<div class="container">
+    <nav class="navbar" id="navID">
+
+        <button type="button" onclick="myFnc(this)" class="toggle-collapse" 
+        id="toggle-button" >
+        
+    <span class="toggle-icon"> </span>
+    </button>
+
+    <ul class="side-nav">
+        <li class="nav-menuItem">
+            <a href="#" class="site-name">Hello<br> Pengsoo World</a>
+        </li>
+        <li class = "nav-menuItem">
+            <!-- 팝업기능 시작  -->
+            <!-- <a href="#" class="nav-link" onclick="window.open('./펭수이력서/resume.html','resume','toolbar=yes, scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=1010');">about Pengsoo</a> -->
+             <a href="#poppoppop-article" class="nav-link" >about Pengsoo</a>
+             <!-- 팝업기능 끝  -->
+        </li>
+        <li class = "nav-menuItem">
+            <a href="#" class="nav-link" onclick="location.href='./effect01.html';">Interactive works</a>
+        </li>
+        <!-- <li class = "nav-menuItem">
+            <a href="#" class="nav-link" onclick="location.href='./effect02.html';">Non-Interacitve</a>
+        </li> -->
+        <li class = "nav-menuItem">
+            <a href="#" class="nav-link"  onclick="location.href='./pengsooGallery/galleryMain.html'">Gallery</a>
+        </li>
+        <li class = "nav-menuItem">
+            <a href = "#" class="nav-link" onclick="location.href='./effect03.html'">Mini-Games</a>
+        </li>
+        <li class = "nav-menuItem">
+            <a href = "#" class="nav-link" onclick="location.href='./Makers/maker.html'">Makers</a>
+        </li>
+
+        <li class = "nav-menuItem">
+            <a href = "#" class="nav-link">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+            </a>
+        </li>
+    </ul>
+    </nav>
+</div>
+<!-- 사이드메뉴바 끝 -->
+
+<!-- 팝업 부분 시작 -->
+<div id="poppoppop-article" class="poppoppop">
+    <div class="poppoppop__block">
+        <iframe src="./펭수이력서/resume.html" frameborder="0" ></iframe>
+        <a href="#poppoppop-article:target" class="poppoppop__close">close</a>
+    </div>
+</div>
+<!-- 팝업 부분 끝 -->
+
+
+
+<!-- 오프닝 시작js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!-- 오프닝 끝js -->
+
+<!-- 로고시작 -->
+    <!-- <script>
+        function replay(){
+            location.href='./index.html';
+        }
+    </script> -->
+<!-- 로고 끝-->
+
+<!-- 사이드메뉴바 스크립트 시작 -->
+<script>
+ 
+    function myFnc(e) {
+           e.classList.toggle("show");
+           var elem = document.getElementById("navID"),
+           Style = window.getComputedStyle(elem),
+           right = Style.getPropertyValue("right");
+           //console.log(right);
+           if(right === "0px") {
+               elem.style.right = "-25%";
+
+           }else {
+               elem.style.right = "0%";
+           }
+       }
+</script>
+<!-- 사이드메뉴바 스크립트 끝 -->
+</body>
+</html>

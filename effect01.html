@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PengWorld</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link href="animsition.min.css" rel="stylesheet">    
+    <link rel="stylesheet" href="backandtop.css">
+    <link href="./font/font.css" rel="stylesheet" type="text/css">
+<style>
+
+   /* popup 효과 style 시작 */
+   .poppoppop {
+        width: 100%;
+        height: 100vh;
+        display: none;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    /* 팝업 기능 넣으려면 poppoppop-article 마다 이렇게 3줄씩 추가해야함 */
+    #poppoppop-article:target {
+        display: flex;
+    }
+
+    #poppoppop-article1:target {
+        display: flex;
+    }
+    #poppoppop-article2:target {
+        display: flex;
+    }
+    #poppoppop-article3:target {
+        display: flex;
+    }
+    #poppoppop-article4:target {
+        display: flex;
+    }
+    #poppoppop-article5:target {
+        display: flex;
+    }
+    #poppoppop-article6:target {
+        display: flex;
+    }
+    #poppoppop-article7:target {
+        display: flex;
+    }
+    #poppoppop-article8:target {
+        display: flex;
+    }
+    #poppoppop-article9:target {
+        display: flex;
+    }
+    /* 팝업 기능 넣으려면 poppoppop-article 마다 이렇게 3줄씩 추가해야함 끝 */
+
+
+    .poppoppop:before {
+            content: "";
+            box-sizing: border-box;
+            width: 100%;
+        /* 팝업창 뜰때 보이는 커텐같은 영역 색상. 마지막 숫자가 불투명도 */
+            background-color: rgb(212, 71, 71);
+
+            position: fixed;
+            left: 0;
+            top: 50%;
+            will-change: height, top;
+            animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+        }
+
+
+    .poppoppop:after {
+            content: "";
+            width: 0;
+            height: 2px;
+
+            /* 번쩍 나타나는 선 색상 */
+            background-color: rgb(212, 71, 71);
+
+            will-change: width, opacity;
+            animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -1px;
+        }
+
+    /* 선긋는 애니메이션 */
+    @keyframes line-animation {
+
+        0% {
+            width: 0;
+            opacity: 1;
+        }
+
+        99% {
+            width: 100%;
+            opacity: 1;
+        }
+
+        100% {
+            width: 100%;
+            opacity: 0;
+        }
+    }
+
+    /* 창문처럼 열리는 애니메이션 */
+    @keyframes open-animation {
+
+        0% {
+            height: 0;
+            top: 50%;
+        }
+
+        100% {
+            height: 100vh;
+            top: 0;
+        }
+    }
+
+
+    .poppoppop__block {
+            
+            position: absolute;
+            top:5%;
+            left:5%;
+
+            width: 90%;
+            height: 90%;
+            
+
+            /* margin: auto; */
+            overflow: hidden;
+            animation: fade .5s ease-out 1.3s both;
+        }
+
+        @keyframes fade {
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .poppoppop__close {
+            width: 3.2rem;
+            height: 3.2rem;
+            text-indent: -9999px;
+
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+        }
+
+         @media screen and (min-width: 768px) {
+
+            html {
+                font-size: 62.5%;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+            html {
+                font-size: 50%;
+            }
+        }
+
+        iframe {
+            display:block;
+            width:100%; 
+            height: 100%;
+            /* height: 100vh;
+            width: 100vw; */
+        }
+
+        
+        
+    /* popup style 끝 */
+
+    .animsition {
+        background-color: blue;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    img{
+        width:500px;
+        height: 350px;
+    }
+
+    h1{
+        font-family: '배달의민족 한나체 Pro';
+    }
+
+    h3{
+        font-family: '210 오복상회';
+    }
+
+    .code--small{
+        width:520px;
+        height: 370px;
+    }
+
+    .animsition-overlay-slide {
+        background-color: #2d8b4d;
+    }
+
+     /* 설명글귀 시작*/
+     h4{
+        font-size:15px;
+        color:olive;
+        width:400px;
+        height:100px;
+        border-color: olive;
+        border-top-style:solid;
+        border-bottom-style:solid;
+        text-align: center;
+        font-family: '210 오복상회';
+        display: inline-block;
+        margin-top: 240px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    .code--small code--small code--left {
+        display: inline-block;
+    }
+  
+     /* 설명글귀 끝 */
+     .one {
+        position: relative;
+        width: 1500px;
+        height: 500px;
+        left: -100px;
+        display: flex;
+     }
+
+</style>
+</head>
+<body>
+    <div class="animsition-overlay">
+        <div class="backgrounds overlay">
+            <div class="background" data-aos="fade-in" data-aos-duration="1500" data-aos-anchor=".section--hero"></div>
+        </div>
+        <!-- 로고랑 top버튼 추가 -->
+        <img id="back" src="./backlogo.png" alt="" onclick="back()">
+        <a id="MOVE_TOP_BTN" href="#">▲TOP</a>
+        <!-- 로고랑 top버튼 추가 -->
+        <header class="hero">
+            <div class="hero-center">
+                <h1 class="hero__logo" data-aos="zoom-in">Interactive works</h1>
+                <!-- <h2 class="hero__text" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">Animate On Scroll <span>Library</span></h2> -->
+            </div>
+            <span class="hero__scroll" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="800">
+                Scroll down <br>
+                <i class="chevron bottom"></i>
+            </span>
+        </header>
+
+        <section class="section section--code">
+            <div class="container">
+                <!-- <h2 class="section-title">Fade</h2> -->
+               <div class="one">
+               <!-- 여기다 넣으시면 됩니다 -->
+                <div class="code code--small code--left" data-aos="fade-up" style:"width:400px;">
+                     <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                     <a href="#poppoppop-article" >
+                    <img src="./thumbnail/int1_photo.png" alt="" >
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div><h4 class="border" id="article1"><br><br>펭수와 사진찍기<br><br>#onclick() #Math.random()</h4>
+            </div>
+            <div class="one">
+                <h4 class="border" id="article2"><br><br>펭수의 그림일기<br><br>#svg #animate #손그림</h4>
+                <div class="code code--small code--right" data-aos="fade-down">
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article1" >
+                    <img src="./thumbnail/int2_diary.png" alt="" >
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+            </div>
+            <div class="one">
+                <div class="code code--small code--left" data-aos="fade-right"> 
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article2" >
+                        <img src="./thumbnail/int3.png" alt="">
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div><h4 class="border" id="article3"><br><br>펭돈나<br><br>#keyframes #transform, filter</h4>
+               
+            </div>
+            <div class="one"><h4 class="border" id="article4"><br><br>형이 왜 거기서 나와?<br><br>#svg #circlemouse #fillRect</h4>
+                <div class="code code--small code--right" data-aos="fade-left">
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article3" >
+                        <img src="./thumbnail/int4_starImg.png" alt="">
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+               
+            </div>
+            <div class="one">
+
+                <div class="code code--small code--left" data-aos="fade-up-right">
+                     <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                     <a href="#poppoppop-article4" >
+                        <img src="./thumbnail/int5_infinite.png" alt="">
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div><h4 class="border" id="article5"><br><br>멈출수없는<br><br>#createElement #append, removeChild</h4>
+            </div>
+            <div class="one">
+                <h4 class="border" id="article6"><br><br>X-ray<br><br>#clipPath #setAttribute() #수작업뼈</h4>
+               <div class="code code--small code--right" data-aos="fade-up-right">
+                <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                <a href="#poppoppop-article5" >
+                   <img src="./thumbnail/int6_bone.png" alt="">
+               </a>
+               <!-- 팝업 기능 끝 -->
+                </div>
+            </div>
+            <div class="one">
+                <div class="code code--small code--left" data-aos="fade-up-right">
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article6" >
+                       <img src="./thumbnail/int7_study.png" alt="">
+                   </a>
+                   <!-- 팝업 기능 끝 -->
+                    </div><h4 class="border" id="article7"><br><br>열공펭수<br><br>#css keyFrames #add, removeClass #css장인</h4>
+
+                </div>
+                <div class="one">
+                    <h4 class="border" id="article8"><br><br>훈수를 듣자<br><br>#canvas #fontSize=distance() #measureText</h4>
+                <div class="code code--small code--right" data-aos="fade-up-right">
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article7" >
+                        <img src="./thumbnail/int8_words.png" alt="">
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div>
+
+            </div>
+            <div class="one">
+                <div class="code code--small code--left" data-aos="fade-up-right">
+                    <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+                    <a href="#poppoppop-article8" >
+                        <img src="./thumbnail/int9_gift.PNG" alt="">
+                    </a>
+                    <!-- 팝업 기능 끝 -->
+                </div><h4 class="border" id="article9"><br><br>감동을 주자<br><br>#draggable #backgroundPosition</h4>
+            </div>
+          
+       
+                <!-- <div class="code code--small code--right" data-aos="fade-up-left">
+                    <pre><code>&lt;div data-aos="fade-up-left">&lt;/div></code></pre>
+                </div>
+                
+                <div class="code code--small code--left" data-aos="fade-down-right">
+                    <pre><code>&lt;div data-aos="fade-down-right">&lt;/div></code></pre>
+                </div>
+                
+                <div class="code code--small code--right" data-aos="fade-down-left">
+                    <pre><code>&lt;div data-aos="fade-down-left">&lt;/div></code></pre>
+                </div> -->
+            </div>
+        </section>
+    </div>
+
+    <!-- 팝업 body 시작 -->
+      <!-- 팝업 기능 넣으려면 poppoppop-article 에 번호 붙여서 추가해야해요 -->
+
+    <div id="poppoppop-article" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./카메라/camera.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    <div id="poppoppop-article1" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./그림일기/haeri-diary.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article1:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    <div id="poppoppop-article2" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./동환/펭돈나.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article2:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    <div id="poppoppop-article3" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./star/star.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article3:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+
+    
+    <div id="poppoppop-article4" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./divide/divide.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article4:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+    <div id="poppoppop-article5" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./boneFinal/intro.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article5:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+    <div id="poppoppop-article6" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./study/study-css.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article6:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+    <div id="poppoppop-article7" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./words/text2.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article7:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+    <div id="poppoppop-article8" class="poppoppop">
+        <div class="poppoppop__block">
+            <iframe src="./mouseeffect/drag.html" frameborder="0" ></iframe>
+            <a href="#poppoppop-article7:target" class="poppoppop__close">close</a>
+        </div>
+    </div>
+    
+    <!-- 팝업 body 끝 -->
+
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="animsition.min.js" charset="utf-8"></script>
+    <script>
+
+        //시작 펑션
+        $(document).ready(function() {
+            $('.animsition-overlay').animsition({
+            inClass: 'overlay-slide-in-top',
+            outClass: 'overlay-slide-out-top',
+            overlay : true,
+            overlayClass : 'animsition-overlay-slide',
+            overlayParentElement : 'body'
+            })
+            
+        });
+
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 1000
+        });
+
+            
+
+    </script>
+           
+    <script src="backandtop.js"></script>
+
+</body>
+</html>

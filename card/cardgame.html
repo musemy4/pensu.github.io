@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="cardgame.css">    
+    
+</head>
+<body>
+    <!-- 14개 , 7세트 -->
+    <div class="container">
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+            <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+            <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+          <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+            <div class="bg"><img src="" alt=""></div>
+        </div>
+        <div class="block">
+        <div class="bg"><img src="" alt=""></div>
+        </div>
+      </div>
+       <div class="congrat">퇴근이다♡ </div> 
+      <div class="scorebox">
+        &nbsp;Score :  &nbsp;<span> </span> / 8 sets
+      </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <script src="move.js"></script>
+        <script>
+        var defaultset=[
+             "./0.png","./1.png","./2.png","./3.png","./4.png","./5.png","./6.png","./7.png",
+        ]
+
+        var span=document.getElementsByTagName('span');    
+        var img = document.getElementsByTagName('img');
+        var congrat=document.getElementsByClassName('congrat');
+
+        //배치를 하고
+        for(i=0;i<img.length;i++){
+        img[i].src=defaultset[i%8];
+        }
+        
+        //섞어줌 
+        for(x=0;x<img.length;x++){
+            var idx=Math.floor(Math.random()*img.length);
+            var tmp=img[x].src;
+            img[x].src=img[idx].src;
+            img[idx].src=tmp;
+        }
+
+        
+        //3.클릭될때 뒤집힘
+        let beforeidx=-1;
+        let beforeNum=-1;
+        let cnt=0;
+        let sets=0; //최대8
+        for(let x=0;x<img.length;x++){
+            //클릭되면
+            img[x].onclick=function(){
+                
+            var srcsplit=img[x].src.split('/');
+            var src=srcsplit[srcsplit.length-1].split('.');
+            var num=Number(src[0]);//숫자로 바꾸는 형변환
+           
+            //alert("번호"+num);
+                    
+            cnt++;
+            if(cnt%2==1){
+                beforeidx=x;
+                //alert("처음이다! idx:"+beforeidx);
+            }  
+
+            if(cnt%2==0){//짝맞추기 시도!!!
+                if(beforeNum-num==0){
+                    alert("짝이다"); //앞면유지
+                    img[beforeidx].src="./closed.png";
+                    img[x].src="./closed.png";
+                    sets++;
+                    span[0].innerText=sets;
+                    if(sets==8){
+                        congrat[0].style.display='block';
+                    }
+                    
+                }else{//짝이 아니면 다시 뒤집어짐
+                    alert("짝이 아니다");
+                    
+                }
+            }
+            beforeNum=num;
+            
+            }//클릭되면 끝
+        }
+
+
+
+
+      </script>
+</body>
+</html>

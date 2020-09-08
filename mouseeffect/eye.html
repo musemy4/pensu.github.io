@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    
+    <style type="text/css">
+
+  
+    
+    html,body{
+      
+      cursor:url("");
+    }
+
+    .img {
+      position:absolute;
+      width: 560px;
+      height: 453px;
+      margin: 100px 400px 0;
+    }
+
+    div#pengImg {
+      background-image: url('./0.png'); position: absolute; 
+    }
+    div#eye {
+      background-image: url('./1.png'); position: absolute;
+    }
+    div#eye:hover {
+      background-image: url('./2.png'); position: absolute;
+    }
+    div#eye:active {
+      background-image: url('./3.png'); position: absolute;
+    }
+     
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(window).mousemove(function(e){
+              var mx = e.pageX-500;
+              var my = e.pageY-300;
+              x = Math.round(mx/80);
+              y = Math.round(my/80);
+              $('#eye').css('backgroundPosition', x+'px '+y+'px');
+              console.log("( " + mx + ", " + my + " )");
+            });
+    });
+
+  
+
+    </script>
+    </head>
+    <body>
+    <div id="imgArea">
+      <div id="pengImg" class="img"></div>
+      <div id="eye" class="img"></div>
+    </div>
+    
+</body>
+</html>

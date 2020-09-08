@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            background:transparent;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            overflow: hidden;
+        }
+        img{
+            
+            left:0%;
+            top:20%;
+            opacity: 50%;
+            position: absolute;
+            z-index: -1;
+        }
+        html:hover span, body:hover span {
+            display: none;
+        }
+
+        canvas {
+            
+            cursor: crosshair;
+        }
+
+        span {
+            font-family: 'Georgia', cursive;
+            font-size: 40px;
+            position: fixed;
+            top: 50%;
+            left: 40%;
+            color: #000;
+            margin-top: -40px;
+            margin-left: -200px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='canvas'></canvas>
+    <img src="./0.png" alt="">
+    <span id='info'>클릭하시면 펭수가 어록을 쏟아냅니다!<span>
+
+    <script>
+        var position = {x: 0, y: window.innerHeight/2};
+        var counter = 0;
+        var minFontSize = 3;
+        var angleDistortion = 0;
+        var letters = "내가힘든데, 힘내라고 하면 힘이 납니까?아니죠, 그쵸?그러니까 힘내라는 말보다 저는 '사랑해'라고 해주고 싶습니다. 여러분들 사랑합니다."+
+        " 부정적인 사람들은 도움 안되니 긍정적인 사람들과 얘기해라"+
+        "오조 오억번 고민해도 사야됩니다 이거"+
+        " 눈치보지 말고 원하는대로 살아라, 눈치챙겨."+
+        " 사장님이 친구같아야 회사도 잘된다."+
+        " 화해했어요. 그래도 보기 싫은건 똑같습니다."+
+        "거 대충넘어갑시다"+
+        "나이가 중요한게 아니고 어른이고 어린이고 중요한게 아닙니다."+
+        "이해하고 배려하고 존중하면 되는거에요."+
+        "세상에 친구는 많고 지구는 넓습니다. 여러분이 사랑하는 사람을 만나세요 "+
+        "취향은 사람마다 다른거니까 취향은 존중해주길 부탁해^^"+
+        "잘하는게 분명히 있을겁니다. 그걸 잘하면 되요"+
+        "실성했습니까?"+
+        "네 전귀엽습니다"+
+        "인사 각도에 예민한 뚝딱 선배님"+
+        "다 잘할순 없어요"+
+        "신이나~신이나~"+
+        "괜찮습니다 호불호가 갈릴수있어요"+
+        "꿈은 없고요, 그냥 놀고싶습니다"
+        ;
+
+        // Drawing variables
+        var canvas;
+        var context;
+        var mouse = {x: 0, y: 0, down: false}
+
+        function init() {
+        canvas = document.getElementById( 'canvas' );
+        context = canvas.getContext( '2d' );
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        canvas.addEventListener('mousemove', mouseMove, false);
+        canvas.addEventListener('mousedown', mouseDown, false);
+        canvas.addEventListener('mouseup',   mouseUp,   false);
+        canvas.addEventListener('mouseout',  mouseUp,  false);  
+        canvas.addEventListener('dblclick', doubleClick, false);
+        
+        window.onresize = function(event) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        }
+
+        function mouseMove ( event ){
+        mouse.x = event.pageX;
+        mouse.y = event.pageY;
+        draw();
+        }
+
+        function draw() {
+        if ( mouse.down ) {
+            var d = distance( position, mouse );
+            var fontSize = minFontSize + d/2;
+            var letter = letters[counter];
+            var stepSize = textWidth( letter, fontSize );
+            
+            if (d > stepSize) {
+            var angle = Math.atan2(mouse.y-position.y, mouse.x-position.x);
+            
+            context.font = fontSize + "px Georgia";
+            
+            context.save();
+            context.translate( position.x, position.y);
+            context.rotate( angle );
+            context.fillText(letter,0,0);
+            context.restore();
+
+            counter++;
+            if (counter > letters.length-1) {
+                counter = 0;
+            }
+            
+            //console.log (position.x + Math.cos( angle ) * stepSize)
+            position.x = position.x + Math.cos(angle) * stepSize;
+            position.y = position.y + Math.sin(angle) * stepSize;
+
+            }
+        }     
+        }
+
+        function distance( pt, pt2 ){
+        
+        var xs = 0;
+        var ys = 0;
+        
+        xs = pt2.x - pt.x;
+        xs = xs * xs;
+        
+        ys = pt2.y - pt.y;
+        ys = ys * ys;
+        
+        return Math.sqrt( xs + ys );
+        }
+
+        function mouseDown( event ){
+            mouse.down = true;
+            position.x = event.pageX;
+            position.y = event.pageY;
+            
+            document.getElementById('info').style.display = 'none';
+        }
+
+        function mouseUp( event ){
+            mouse.down = false;
+        }
+
+        function doubleClick( event ) {
+            canvas.width = canvas.width; 
+        }
+
+        function textWidth( string, size ) {
+            context.font = size + "px Georgia";
+            
+            if ( context.fillText ) {
+                return context.measureText( string ).width;
+            } else if ( context.mozDrawText) {
+                return context.mozMeasureText( string );
+            }
+            
+        };
+
+        init();
+    </script>
+</body>
+</html>

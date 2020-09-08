@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengsu Exhibition</title>
+    <!-- css 설정초기화 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- css 링크 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/animsition.min.css" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+    <!-- js 링크 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/plugins/animation.gsap.js"></script>
+
+</head>
+<body>
+    <div class="animsition">
+    <div id="board">
+        <!-- 백 앤 탑 -->
+        <img id="back" src="../backlogo.png" alt="" onclick="back()">
+        <a id="MOVE_TOP_BTN" href="#">▲TOP</a>
+
+        <!-- 네비게이션 바 -->
+        <nav class="navbar">
+            
+            <div class="progress-bar"></div>
+            <div class="progress-bar--increment"><img src="./img/icon6.svg" style="height: 70px;" alt="" id="icon"></div>
+                <ul>
+                    <li><a href="#top">Main</a></li>
+                    <li><a href="#container1"><span class="progress-bar--circle"></span>Pop Art</a></li>
+                    <li><a href="#container2"><span class="progress-bar--circle"></span>Costume Pengsoo</a></li>
+                    <li><a href="#container4"><span class="progress-bar--circle"></span>Famous Saying</a></li>
+                    <li><a href="#digitalText"><span class="progress-bar--circle"></span>Digital Art</a></li>
+                    <li><a href="#video"><span class="progress-bar--circle"></span>Video</a></li>
+                    <!-- <li><a href="#bottom"><span class="progress-bar--circle"></span>End</a></li> -->
+                </ul>
+        </nav>
+        
+        <!-- 갤러리 시작 -->
+        <div id="top">
+        <!-- <div class="c_group" id="main">
+            <h1>웰컴 들어갈 자리</h1> -->
+            <iframe class="otherPages" src="./exhibition_start.html" frameborder="0" framespacing="0"> </iframe>
+        </div>
+        <!-- 메인 페이지 끝 -->
+
+        <!-- 수평 이미지 스크롤 -->
+        <div id="container1">
+            <section class="section-items bg-dark text-white">
+                <div class="scroll-slider">
+                <div class="scroll-wrapper">
+                    <article class="item scroll-slide">
+                    <div class="scroll-line"></div>
+                    <div class="item-container">
+                        <div class="item-image">
+                        <img src="./img/pic1.png" alt="Image">
+                        </div>
+                    </div>
+                    </article>
+                    <article class="item scroll-slide">
+                    <div class="item-container">
+                        <div class="item-image">
+                        <img src="./img/pic5.jpg" alt="Image">
+                        </div>
+                    </div>
+                </article>
+                    <article class="item scroll-slide">
+                    <div class="item-container">
+                        <div class="item-image">
+                        <img src="./img/pic2.jpg" alt="Image">
+                        </div>
+                    </div>
+                    </article>
+                    <article class="item scroll-slide">
+                    <div class="scroll-line"></div>
+                    <div class="item-container">
+                        <div class="item-image">
+                        <img src="./img/pic3.jpg" alt="Image">
+                        </div>
+                    </div>
+                    </article>
+                    <article class="item scroll-slide">
+                    <div class="item-container">
+                        <div class="item-image">
+                        <img src="./img/pic4.jpg" alt="Image">
+                        </div>
+                    </div>
+                    </article>
+                    <article class="item scroll-slide">
+                        <div class="item-container">
+                        <div class="item-image">
+                            <img src="./img/pic6.jpg" alt="Image">
+                        </div>
+                        </div>
+                    </article>
+                </div>
+                </div>
+            </section>
+        </div>
+        <!-- 수평 이미지 스크롤 끝 -->
+
+        <!-- <div class="c_group" id="container2"> -->
+            <div class="costumeContainer" id="container2">
+                <!-- svg viewBox="0 0 1758 116" 사이즈 조정 부분 -->
+                <svg viewBox="0 0 1888 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g stroke="none" fill="none" fill-rule="evenodd" fill-opacity="0">
+                        <text id="@WebDesignerMag" stroke="#fff" fill="#645F5A" font-weight="normal" font-family="PermanentMarker-Regular, Permanent Marker" font-size="144">
+                            <tspan x="3" y="109">
+                                <tspan>C</tspan>
+                                <tspan>o</tspan>
+                                <tspan>s</tspan>
+                                <tspan>t</tspan>
+                                <tspan>u</tspan>
+                                <tspan>m</tspan>
+                                <tspan>e</tspan>
+                                <tspan>P</tspan>
+                                <tspan>e</tspan>
+                                <tspan>n</tspan>
+                                <tspan>g</tspan>
+                                <tspan>s</tspan>
+                                <tspan>o</tspan>
+                                <tspan>o</tspan>
+                            </tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+        <!-- </div> -->
+        <!-- 코스튬 펭수 텍스트 끝 -->
+
+        <div id="container3">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >MC 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >신부 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>락 펭수</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >부케 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >조교 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >플렉수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >망토 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p >요가 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>래퍼 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>펭수꾼</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>차차 펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>머머리펭</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>방탄유다</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>아이언펭</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>펭도르</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>뷰티펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>귀농펭수</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>이집트펭</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>펭장님</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>펭느님</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-type-2">
+                        <div class="imgFrame">
+                        </div>
+                        <p>산타펭수</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 코스튬 펭수 갤러리 끝 -->
+
+        <div id="container4">
+            <iframe  class="otherPages" src="./famousSaying_start.html" frameborder="0" framespacing="0"></iframe>
+        </div>
+        <!-- 명언 텍스트 끝 -->
+
+        <div>
+            <iframe  class="otherPages" src="./famousSaying.html" frameborder="0" framespacing="0"></iframe>
+        </div>
+        <!-- 명언 끝 -->
+
+        <div class="c_group" id="digitalText">
+            <h1>Digital Art Museum</h1>
+        </div>
+        <!-- 동환님 텍스트 끝 -->
+
+        <div class="c_group" id="mouseImg">
+            <div class="three rows" id="first-page " >
+                <!-- three tiles per row -->
+                <div class="three cols">
+                  <!-- tile plus some schmancyness -->
+                  <div class="schmancy tile pic0">
+                    <!-- tile content -->
+                    <div class="content"> <p>나는아모고토</p> <img src="./img/못해.png" alt="" srcset=""  ></div>
+                   
+                  </div>
+                  <!-- and so on... -->
+                  <div class="schmancy tile pic3">
+                    <div class="content"> <p>빨가면~</p> <img src="./img/사과.png" alt="" srcset="" ></div>
+                    
+                  </div>
+                  <div class="schmancy tile pic1">
+                    <div class="content"> <p>늑대능~!</p> <img src="./img/늑대.png" alt="" srcset="" ></div>
+                  </div>
+                </div>
+                <div class="four cols">
+                  <div class="schmancy tile pic2">
+                    <div class="content"> <p>빠지..ㄱ!</p> <img src="./img/빠직.png" alt="" srcset="" ></div>
+                  </div>
+                  <div class="schmancy tile pic1">
+                    <div class="content"> <p>이글아이</p> <img src="./img/이글아이.png" alt="" srcset="" ></div>
+                  </div>
+                  <div class="schmancy tile pic2">
+                    <div class="content"> <p>인싸포즈</p> <img src="./img/킴인수.png" alt="" srcset="" ></div>
+                  </div>
+                  <div class="schmancy tile pic1">
+                    <div class="content"> <p>콰콰콰쾅</p> <img src="./img/쾅.png" alt="" srcset="" ></div>
+                  </div>
+                </div> 
+                <div class="three cols">
+                  <div class="schmancy tile pic0">
+                    <div class="content"> <p>이시키가</p> <img src="./img/자뻑.png" alt="" srcset="" ></div>
+                  </div>
+                  <div class="schmancy tile pic3">
+                    <div class="content"> <p>거울을봤더니</p> <img src="./img/거울.png" alt="" srcset="" ></div>
+                  </div>
+                  <div class="schmancy tile pic1">
+                    <div class="content"> <p>그러게</p> <img src="./img/그러게.png" alt="" srcset="" ></div>
+                  </div>
+                </div>
+                
+              </div>
+        </div>
+        <!-- 동환님 텍스트 마우스오버 끝 -->
+
+        <div id="digitalArtDiv">
+            <iframe class="otherPages" src="./peng2/digitalMain.html" frameborder="0" framespacing="0"></iframe>
+        </div>
+        <!-- 동환님꺼 끝 -->
+
+        <div id="video">
+            <!-- <iframe width="1920px" height="1080px" src="https://www.youtube.com/embed/uBlGkcww5Fs" frameborder="0" allow="autoplay;" allowfullscreen></iframe> -->
+            <video id="myVideo" src="./asmr.mp4" controls autoplay></video>
+        </div>
+        <!-- 유튜브 삽입 -->
+
+    </div>
+    <footer id="bottom" style="text-align: center; padding-top: 7%;">
+        <iframe class="otherPages" src="./ending.html" frameborder="0" framespacing="0"></iframe>
+    </footer>
+    </div>
+    <!-- board 끝 -->
+
+
+    <!-- js 임포트 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="./js/animsition.min.js" charset="utf-8"></script>
+    <script src="./js/backandtop.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/scroll.js"></script>
+    
+    <!-- 스르륵 올라가기 -->
+    <script>        
+        $(document).ready(function() {
+            $('.animsition').animsition({
+            inClass: 'fade-in-up',
+            outClass: 'fade-out-down',
+            })
+        });
+
+    </script>
+
+
+    <script>
+        // 코스튬 이미지 넣는 js
+        window.onload = function(){
+            var tmp = [];
+            var imgArr = document.getElementsByClassName("imgFrame");
+
+            for(i=1; i<=21; i++) {
+                var imgPath = "./costume" + i + ".jpg";
+                tmp[i] = "<img src='./img/"+ imgPath +"'>";
+            }
+
+            for(i=0; i<imgArr.length; i++) {
+                imgArr[i].innerHTML = tmp[i+1];
+            }
+        }
+    </script>
+
+    <script>
+        // 이벤트 한번만 주기 
+        window.addEventListener("scroll", myFunction,{
+            once:true
+        });
+  
+        // 스크롤 내리면 노래 재생
+        function myFunction() {
+            if (document.body.scrollTop >1 || document.documentElement.scrollTop >1) {
+                document.getElementById("myVideo").play(); 
+            }
+            
+        }
+  </script>
+</body>
+</html>

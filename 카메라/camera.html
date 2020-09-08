@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0" >
+    <title>펭수 카메라</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+                
+        @font-face{
+            font-family: '여기어때 잘난체';
+            src: url('fonts/Jalnan.ttf') format('truetype');
+            font-style: normal;
+            font-style: normal;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Lobster');
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #cameraPeng {
+            background-color: #46B09D;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        h1,
+        h2 {
+        /*    background-color: #CCC;*/
+            text-align: center;
+            margin: 0;
+            color: #334D5D;
+            padding: 0;
+            font-family: '여기어때 잘난체';
+            text-shadow:
+                 -1px -1px 0 rgb(255, 255, 255),  
+                1px -1px 0 rgb(255, 255, 255),
+                -1px 1px 0 rgb(255, 255, 255),
+                1px 1px 0 rgb(255, 255, 255);
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            color: crimson;
+            font-weight: bold;
+            font-size: 50px;
+            line-height: 100px;
+            padding-top: 10px;
+            height: 90px;
+        }
+
+        h2 {
+            color:brown;
+            font-size: 17px;
+            padding-bottom: 10px;
+        }
+
+
+        #camera {
+            width: 100%;
+            height: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -40px;
+            background-color: #46B09D;
+            display: block;
+            width: 800px;
+
+        }
+
+
+        /* CAMERA FACE AND BLUE BUTTON */
+
+        #camera-front {
+            background-color: #F4EFC9;
+            width: 300px;
+            height: 150px;
+            border-top-left-radius: 22px;
+            border-top-right-radius: 22px;
+            z-index: 3;
+            position: absolute;
+            -webkit-transform: translate(-196px, 72px);
+                -ms-transform: translate(-196px, 72px);
+                    transform: translate(-196px, 72px);
+        }
+
+        #camera-front:before {
+            width: 100%;
+            bottom: 0;
+            height: 135px;
+            background-color: #D4D0B4;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            position: absolute;
+            content: "";
+        }
+
+        #camera-front:after {
+            width: 65px;
+            height: 26px;
+            background-color: #334D5D;
+            border-radius: 8px;
+            position: absolute;
+            content: "";
+            -webkit-transform: translate(15px, 50px);
+                -ms-transform: translate(15px, 50px);
+                    transform: translate(15px, 50px);
+        }
+
+
+        /* END OF CAMERA FACE AND BLUE BUTTON */
+
+
+        /* BACK AND FLASH OF CAMERA */
+
+        #flash {
+            border-bottom: 60px solid #233643;
+            border-left: 2px solid transparent;
+            border-right: 2px solid transparent;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            height: 0;
+            width: 90px;
+            z-index: 1;
+            -webkit-transform: translate(440px, 50px);
+                -ms-transform: translate(440px, 50px);
+                    transform: translate(440px, 50px);
+            right: 0;
+        }
+
+        #flash:before {
+            background-color: #636A75;
+            position: absolute;
+            content: "";
+            width: 55px;
+            height: 35px;
+            -webkit-transform: translate(15px, 15px);
+                -ms-transform: translate(15px, 15px);
+                    transform: translate(15px, 15px);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-left: 5px solid #575D66;
+        }
+
+
+        /* BACK OF CAMERA */
+
+        #flash:after {
+            border-bottom: 40px solid #334D5D;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            height: 0;
+            width: 280px;
+            z-index: 2;
+            position: absolute;
+            content: "";
+            -webkit-transform: translate(-196px, 50px);
+                -ms-transform: translate(-196px, 50px);
+                    transform: translate(-196px, 50px);
+        }
+
+
+        /* END OF FLASH AND BACK OF CAMERA */
+
+
+        /* CAMERA HOOD */
+
+        #camera-hood {
+            border-bottom: 65px solid #F4EFC9;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            height: 0;
+            width: 300px;
+            position: absolute;
+            -webkit-transform: translate(-10px, 150px);
+                -ms-transform: translate(-10px, 150px);
+                    transform: translate(-10px, 150px);
+        }
+
+        #camera-hood:after {
+            position: absolute;
+            content: "";
+            background-color: #D9D0A0;
+            width: 320px;
+            height: 15px;
+            -webkit-transform: translate(-10px, 65px);
+                -ms-transform: translate(-10px, 65px);
+                    transform: translate(-10px, 65px);
+        }
+
+
+        /* END OF CAMERA HOOD */
+
+
+        /* CAMERA SLOT */
+
+        #camera-slot {
+            position: absolute;
+            background-color: #7C5650;
+            width: 320px;
+            height: 75px;
+            -webkit-transform: translate(-10px, 80px);
+                -ms-transform: translate(-10px, 80px);
+                    transform: translate(-10px, 80px);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        #camera-slot:before {
+            position: absolute;
+            content: "";
+            background-color: #2A2E36;
+            width: 290px;
+            height: 25px;
+            -webkit-transform: translate(15px, 25px);
+                -ms-transform: translate(15px, 25px);
+                    transform: translate(15px, 25px);
+            border-top: 10px solid #A3837D;
+        }
+
+
+        /* END OF CAMERA SLOT */
+
+
+        /* CAMERA LENS */
+
+        #lens {
+            position: absolute;
+            /*    background-color: #FFF;*/
+            width: 120px;
+            height: 128px;
+            -webkit-transform: translate(90px, 15px);
+                -ms-transform: translate(90px, 15px);
+                    transform: translate(90px, 15px);
+        }
+
+        #lens-inner {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #D8D6D8;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 10px solid #56887E;
+            -webkit-transform: translateY(35px);
+                -ms-transform: translateY(35px);
+                    transform: translateY(35px);
+        }
+
+        #lens-middle {
+            position: relative;
+            background-color: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 10px solid #8DBEB2;
+            -webkit-transform: translate(-17px, -15px);
+                -ms-transform: translate(-17px, -15px);
+                    transform: translate(-17px, -15px);
+        }
+
+        #lens-middle:after {
+            position: absolute;
+            content: "";
+            background-color: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 12px solid #5D4A53;
+            -webkit-transform: translate(-17px, -15px);
+                -ms-transform: translate(-17px, -15px);
+                    transform: translate(-17px, -15px);
+        }
+
+        #lens-outer {
+            position: absolute;
+            background-color: none;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 20px solid #49363E;
+            -webkit-transform: translate(-48px, -103px);
+                -ms-transform: translate(-48px, -103px);
+                    transform: translate(-48px, -103px);
+        }
+
+        #lens-outer:after {
+            position: absolute;
+            content: "";
+            background-color: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 32px solid #2A2E36;
+            -webkit-transform: translate(-20px, -14px);
+                -ms-transform: translate(-20px, -14px);
+                    transform: translate(-20px, -14px);
+        }
+
+
+        /* END OF CAMERA LENS */
+
+
+        /* CAMERA VIEWFINDER */
+
+        #viewfinder {
+            position: absolute;
+            background-color: #575D66;
+            width: 55px;
+            height: 55px;
+            -webkit-transform: translate(225px, 30px);
+                -ms-transform: translate(225px, 30px);
+                    transform: translate(225px, 30px);
+            border-radius: 5px;
+            border: 3px solid #233643;
+        }
+
+        #viewfinder:before {
+            position: absolute;
+            content: "";
+            background-color: #636A75;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        #viewfinder:after {
+            position: absolute;
+            content: "";
+            background-color: #D8D6D8;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            -webkit-transform: translate(8px, 3px);
+                -ms-transform: translate(8px, 3px);
+                    transform: translate(8px, 3px);
+            opacity: 0.2;
+        }
+
+        #viewfinder:hover {
+            background-color: rgb(56, 59, 63);
+            cursor: pointer;
+        }
+
+        /* END OF CAMERA VIEWFINDER */
+
+
+        /* CAMERA BUTTONS */
+
+        #button {
+            position: absolute;
+            background-color: #F15F61;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            -webkit-transform: translate(25px, 85px);
+                -ms-transform: translate(25px, 85px);
+                    transform: translate(25px, 85px);
+            border: 2px solid #5A5150;
+        }
+
+        #button:hover {
+            background-color: #E0585A;
+            cursor: pointer;
+        }
+
+        #shutter {
+            opacity: 0;
+            -webkit-transition: all .1s ease-in;
+            -o-transition: all .1s ease-in;
+            transition: all .1s ease-in;
+            position: fixed;
+            height: 100vw;
+            width: 100vw;
+            background-color: #FFF;
+            margin: 0;
+            top: -100px;
+        }
+
+        #shutter.on {
+            opacity: 1;
+        }
+
+        #dial {
+            position: absolute;
+            background-color: #334D5D;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            -webkit-transform: translate(225px, 100px);
+                -ms-transform: translate(225px, 100px);
+                    transform: translate(225px, 100px);
+            border: 4px solid #2A2E36;
+        }
+
+
+        /* END OF CAMERA BUTTONS */
+
+
+        /* STRIPES */
+
+        #stripe-top,
+        #stripe-bottom {
+            position: absolute;
+            background-color: #AB8C33;
+            width: 5px;
+            height: 15px;
+            border-left: 5px solid #A45D1D;
+            border-right: 5px solid #438C6F;
+        }
+
+        #stripe-top {
+            -webkit-transform: translateX(143px);
+                -ms-transform: translateX(143px);
+                    transform: translateX(143px);
+            bottom: 0;
+        }
+
+        #stripe-bottom {
+            -webkit-transform: translate(143px, 65px);
+                -ms-transform: translate(143px, 65px);
+                    transform: translate(143px, 65px);
+            z-index: 6;
+        }
+
+        #stripe-top:before,
+        #stripe-bottom:before {
+            position: absolute;
+            content: "";
+            background-color: #A13A46;
+            width: 5px;
+            height: 15px;
+            -webkit-transform: translateX(-10px);
+                -ms-transform: translateX(-10px);
+                    transform: translateX(-10px);
+        }
+
+        #stripe-top:after,
+        #stripe-bottom:after {
+            position: absolute;
+            content: "";
+            background-color: #3E5361;
+            width: 5px;
+            height: 15px;
+            -webkit-transform: translateX(10px);
+                -ms-transform: translateX(10px);
+                    transform: translateX(10px);
+        }
+
+        #stripe-middle {
+            position: absolute;
+            background-color: #F0C84D;
+            width: 5px;
+            height: 65px;
+            border-left: 5px solid #EB8529;
+            border-right: 5px solid #5FC99C;
+            -webkit-transform: translateX(143px);
+                -ms-transform: translateX(143px);
+                    transform: translateX(143px);
+        }
+
+        #stripe-middle:before,
+        #stripe-middle:after {
+            position: absolute;
+            content: "";
+            width: 5px;
+            height: 65px;
+        }
+
+        #stripe-middle:before {
+            background-color: #E55367;
+            -webkit-transform: translateX(-10px);
+                -ms-transform: translateX(-10px);
+                    transform: translateX(-10px);
+        }
+
+        #stripe-middle:after {
+            background-color: #567689;
+            -webkit-transform: translateX(10px);
+                -ms-transform: translateX(10px);
+                    transform: translateX(10px);
+        }
+
+        #result {
+            position: absolute;
+            top:115px;
+            left:40px;
+            width: 220px;
+            height: 350px;
+            overflow: hidden;
+        }
+        
+        #polaroid {
+            top:-350px;
+            width: 100%;
+            height: 100%;
+            margin:0 auto;
+            position: absolute;
+        }
+
+        #backgroundImg {
+            width: 220px;
+            height: 350px;
+            top: 10;
+            left: 10;
+        }
+
+        #polaroidCover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border:10px white solid;
+            border-bottom: solid white 40px;
+            position: absolute;
+            width: 200px;
+            height: 300px;
+        }
+
+
+        /* END OF STRIPES */
+
+    </style>
+</head>
+<body>
+    <div id="cameraPeng">
+        <h1>펭수와 사진찍기</h1>
+        <h2>펭수와 추억을 남기세요</h2>
+    <div id="polaroidDiv">
+        <div id="shutter"></div>
+        <audio id="mp3" src="http://www.soundjay.com/mechanical/camera-shutter-click-08.mp3"></audio>
+        <div id="camera">
+           
+
+
+            <div id="flash">
+                <div id="camera-front">
+                <div id="stripe-top"></div>
+                <div id="lens">
+                    <div id="lens-inner">
+                    <div id="lens-middle">
+                    </div>
+                    <div id="lens-outer">
+                    </div>
+                    </div>
+                </div>
+                <div id="viewfinder"></div>
+                <div id="camera-hood">
+                    <div id="stripe-middle"></div>
+                    <div id="stripe-bottom"></div>
+                    <div id="camera-slot"></div>
+                    <div id="result"><div id="polaroid"><img id="backgroundImg"><img id="polaroidCover" src="polaroidCover1.png"></div></div>
+                </div>
+                <div id="button"></div>
+                <div id="dial"></div>
+                </div>
+            </div>
+            <img src="cameraPengsoo.png" id="peng">
+        </div>
+    </div>
+
+    
+ 
+
+    <input type="file" id="fileUpload" accept="image/*" onchange='openFile(event)' style="visibility: hidden;"/>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+
+
+    </div>
+    
+
+    
+</body>
+<script>
+    var userUp = false;
+    var pengsooPicArr = [1,2,3,4,5];
+    var backgroundPicArr = [1,2,3,4,5,6,7];
+    var resultImg = document.getElementById("backgroundImg");
+    var polaroidCover = document.getElementById("polaroidCover");
+
+    function refreshPengPic() {
+        pengsooPicArr.sort((a,b)=>.5-Math.random());
+        polaroidCover.src = "polaroidCover"+pengsooPicArr[0]+".png";
+    }
+
+    function refreshBgPic() {       
+        backgroundPicArr.sort((a,b)=>.5-Math.random());
+        backgroundImg.src = "background"+backgroundPicArr[0]+".png";
+    }
+
+    var openFile = function(event) {
+        userUp = true;
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function(){
+            var dataURL = reader.result;
+            backgroundImg.src = dataURL;
+        };
+        reader.readAsDataURL(input.files[0]);
+    };
+
+    var sound = document.getElementById("mp3");
+    button.onclick = function () {
+        shutter.className="on";
+        sound.play();
+        setTimeout(function () {
+                    shutter.className="";
+                }, 30 * 2 + 50);
+        printPhoto();
+    }
+
+    document.getElementById("viewfinder").onclick = function () {
+        fileUpload.click();
+    }
+
+    function printPhoto() {           
+        refreshPengPic();          
+        if(!userUp) refreshBgPic();  
+        var polaroid = document.getElementById("polaroid");   
+        var pos = -350;
+        var id = setInterval(frame, 5);
+        function frame() {
+            if (pos == 0) {
+            clearInterval(id);
+            } else {
+            pos++; 
+            polaroid.style.top = pos + "px"; 
+            }
+        }
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: rgb(27, 165, 199);
+      transform: translate3d(0, 0, 0) scale(0.85);
+      animation: zoom 10s ease forwards;
+    }
+    @keyframes zoom {
+      100% {
+        transform: scale(0.9);
+      }
+    }
+    #page {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-content: center;
+    }
+    #canvas {
+      position: relative;
+      width: 900px;
+      height: 600px;
+      background-color: rgb(248, 215, 215);
+      border: 10px solid rgb(11, 0, 71);
+      overflow: hidden;
+    }
+    #sweat1 {
+      position: absolute;
+      background: rgb(42, 133, 251);
+      width: 8px;
+      height: 8px;
+      margin-left: 6px;
+      border-radius: 0 100% 40% 50% / 0 50% 40% 100%;
+      transform-origin: 0% 0%;
+      animation: sweat1 1.3s ease-in infinite;
+      transform: rotate(-90deg) scale(0);
+    }
+    @keyframes sweat1 {
+      0%,
+      100% {
+        display: block;
+        left: 610px;
+        top: 110px;
+        transfofrm: rotate(-90deg) scale(0);
+      }
+      25% {
+        display: block;
+        left: 610px;
+        transform: rotate(-90deg) scale(2);
+      }
+      49.9% {
+        display: block;
+        left: 610px;
+        top: 145px;
+        transform: rotate(-90deg) scale(0);
+      }
+      50% {
+        display: block;
+        left: 670px;
+        top: 80px;
+        transform: rotate(-90deg) scale(0);
+      }
+      75% {
+        display: block;
+        left: 670px;
+        transform: rotate(-90deg) scale(2);
+      }
+      99.9% {
+        display: block;
+        left: 670px;
+        top: 125px;
+        transform: rotate(-90deg) scale(0);
+      }
+    }
+    #sweat2 {
+      position: absolute;
+      background: rgb(131, 185, 255);
+      width: 12px;
+      height: 12px;
+      margin-left: 6px;
+      border-radius: 0 100% 40% 50% / 0 50% 40% 100%;
+      transform-origin: 0% 0%;
+      animation: sweat2 1.8s ease-in infinite;
+      transform: rotate(-90deg) scale(0);
+    }
+    @keyframes sweat2 {
+      0%,
+      100% {
+        display: block;
+        left: 600px;
+        top: 80px;
+        transfofrm: rotate(-90deg) scale(0);
+      }
+      25% {
+        display: block;
+        left: 600px;
+        transform: rotate(-90deg) scale(2);
+      }
+      49.9% {
+        display: block;
+        left: 600px;
+        top: 115px;
+        transform: rotate(-90deg) scale(0);
+      }
+      50% {
+        display: block;
+        left: 630px;
+        top: 120px;
+        transform: rotate(-90deg) scale(0);
+      }
+      75% {
+        display: block;
+        left: 630px;
+        transform: rotate(-90deg) scale(2);
+      }
+      99.9% {
+        display: block;
+        left: 630px;
+        top: 155px;
+        transform: rotate(-90deg) scale(0);
+      }
+    }
+    #sweat3 {
+      position: absolute;
+      background: rgb(250, 252, 255);
+      width: 10px;
+      height: 10px;
+      margin-left: 6px;
+      border-radius: 0 100% 40% 50% / 0 50% 40% 100%;
+      transform-origin: 0% 0%;
+      animation: sweat3 1s ease-in infinite;
+      transform: rotate(-90deg) scale(0);
+    }
+    @keyframes sweat3 {
+      0%,
+      100% {
+        display: block;
+        left: 580px;
+        top: 100px;
+        transfofrm: rotate(-90deg) scale(0);
+      }
+      25% {
+        display: block;
+        left: 580px;
+        transform: rotate(-90deg) scale(2);
+      }
+      49.9% {
+        display: block;
+        left: 580px;
+        top: 120px;
+        transform: rotate(-90deg) scale(0);
+      }
+      50% {
+        display: block;
+        left: 670px;
+        top: 150px;
+        transform: rotate(-90deg) scale(0);
+      }
+      75% {
+        display: block;
+        left: 670px;
+        transform: rotate(-90deg) scale(2);
+      }
+      99.9% {
+        display: block;
+        left: 670px;
+        top: 195px;
+        transform: rotate(-90deg) scale(0);
+      }
+    }
+    #pengsoo {
+      position: absolute;
+      top: 30px;
+      transform-origin: 770px 1000px;
+      transform: rotate(-15deg);
+      cursor: pointer;
+    }
+    .crazy {
+      animation: crazy 0.08s linear infinite;
+    }
+    @keyframes crazy {
+      50% {
+        transform: rotate(-13.5deg);
+      }
+    }
+    .wakeUp {
+      animation: wakeUp 4s ease-in backwards;
+    }
+    @keyframes wakeUp {
+      5% {
+        transform: rotate(-15deg);
+      }
+      10% {
+        transform: rotate(5deg);
+      }
+      95% {
+        transform: rotate(5deg);
+      }
+    }
+    #body {
+      z-index: 1;
+      position: absolute;
+      top: 30px;
+      left: 400px;
+    }
+    #body:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 450px;
+      height: 800px;
+      border-radius: 55% 45% 100% 0% / 31% 27% 73% 69%;
+      background-color: rgb(78, 77, 74);
+    }
+    #body:after {
+      position: absolute;
+      content: "";
+      left: -33px;
+      top: 235px;
+      width: 450px;
+      height: 400px;
+      background-color: rgb(78, 77, 74);
+      transform: rotate(10deg);
+    }
+    #head {
+      z-index: 2;
+      position: absolute;
+      top: 44px;
+      left: 50px;
+    }
+    .head {
+      animation: headUp 4s ease backwards;
+    }
+    @keyframes headUp {
+      10% {
+        left: 50px;
+      }
+      15% {
+        left: 78px;
+      }
+      90% {
+        left: 78px;
+      }
+    }
+    #face {
+      content: "";
+      position: absolute;
+      top: 22px;
+      left: -41px;
+      background-color: rgb(255, 253, 245);
+      width: 394px;
+      height: 304px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 42% 42%;
+      transform: rotateZ(10deg) rotateY(-28deg) rotateX(0deg);
+      box-shadow: inset -23px 23px 46px #d1d1d1, 
+            inset 23px -23px 46px #ffffff;
+    }
+    .face {
+      animation: faceUp 4s ease backwards;
+    }
+    @keyframes faceUp {
+      10% {
+        box-shadow: inset -23px 23px 46px #d1d1d1, 
+            inset 23px -23px 46px #ffffff;
+
+      }
+      15% {
+        box-shadow: inset -22px 22px 44px #e3e3e3, 
+            inset 22px -22px 44px #ffffff;
+
+      }
+      97% {
+        box-shadow: inset -22px 22px 44px #e3e3e3, 
+            inset 22px -22px 44px #ffffff;
+
+      }
+    }
+    #eye1 {
+      position: absolute;
+      top: 112px;
+      left: 39px;
+      width: 81px;
+      height: 70px;
+      border-radius: 50%;
+      box-shadow: 2px -2px 10px #d3d3d3, -2px 2px 10px #fdfdfd,
+        inset 3px -3px 10px #d3d3d3, inset -3px 3px 10px #fdfdfd;
+      transform: rotate(10deg);
+    }
+    #eye1:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 151px;
+      width: 81px;
+      height: 70px;
+      border-radius: 50%;
+      box-shadow: 2px -2px 10px #d3d3d3, -2px 2px 10px #fdfdfd,
+        inset 3px -3px 10px #d3d3d3, inset -3px 3px 10px #fdfdfd;
+    }
+    #pupil1 {
+      position: absolute;
+      top: 22px;
+      left: 31px;
+      width: 17px;
+      height: 20px;
+      border-radius: 100%;
+      background-color: black;
+      box-shadow: 157px 6px black;
+    }
+    #mouth-top {
+      position: absolute;
+      top: 172px;
+      left: 126px;
+      background-color: #f8cc2d;
+      width: 1px;
+      height: 46px;
+      border-left: 23px solid #f8cc2d;
+      border-right: 23px solid #f8cc2d;
+      border-radius: 70%;
+      transform: rotate(14deg);
+    }
+    #mouth-top:before {
+      content: "";
+      position: absolute;
+      top: 40px;
+      left: -47px;
+      width: 89px;
+      height: 24px;
+      background-color: #4d1111;
+      border-top: 14px solid black;
+    }
+    #nose-hole {
+      position: absolute;
+      top: 13px;
+      left: -10px;
+      width: 4px;
+      height: 7px;
+      background-color: black;
+      transform: rotate(22deg);
+      border-radius: 100%;
+    }
+    #nose-hole:after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 17px;
+      width: 4px;
+      height: 7px;
+      background-color: black;
+      transform: rotate(-41deg);
+      border-radius: 100%;
+    }
+    #mouth-lip1 {
+      position: absolute;
+      top: 109px;
+      left: 54px;
+      background-color: transparent;
+      width: 155px;
+      height: 109px;
+      border: solid 22px;
+      border-color: transparent transparent #f8cc2d transparent;
+      border-radius: 0 0 109px 100px;
+      transform: rotate(12deg);
+    }
+    #mouth-lip2 {
+      position: absolute;
+      top: 189px;
+      left: 59px;
+      width: 43px;
+      border-top: 15px solid #f8cc2d;
+      border-bottom: 18px solid #f8cc2d;
+      border-radius: 54%;
+      transform: rotate(25deg);
+      box-shadow: 1px 1px 5px rgb(148, 108, 44);
+    }
+    #mouth-lip2:before {
+      content: "";
+      position: absolute;
+      top: -42px;
+      left: 123px;
+      width: 47px;
+      height: 0px;
+      border-top: 15px solid #f8cc2d;
+      border-bottom: 18px solid #f8cc2d;
+      border-radius: 54%;
+      transform: rotate(-28deg);
+      box-shadow: 1px 1px 5px rgb(148, 108, 44);
+    }
+    #mouth-lip2:after {
+      content: "";
+      position: absolute;
+      top: -34px;
+      left: 10px;
+      width: 126px;
+      height: 109px;
+      border: solid 20px #f8cc2d;
+      border-color: #f8cc2d transparent transparent transparent;
+      border-radius: 44%/71px 71px 0 0;
+      transform: rotate(-12deg);
+    }
+    #blush {
+      position: absolute;
+      top: 184px;
+      left: -5px;
+      width: 47px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: pink;
+      transform: rotate(5deg);
+      box-shadow: 1px 1px 5px rgb(88, 39, 51);
+    }
+    #blush:after {
+      content: "";
+      position: absolute;
+      top: 27px;
+      left: 250px;
+      width: 47px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: pink;
+      transform: rotate(16deg);
+      box-shadow: 1px 1px 5px rgb(88, 39, 51);
+
+    }
+    #headset {
+      position: absolute;
+      top: 0px;
+      left: 130px;
+    }
+    #headset-band {
+      position: absolute;
+      top: -6px;
+      left: -159px;
+      width: 439px;
+      height: 400px;
+      border: solid 30px #fff200;
+      border-color: #fff200 transparent transparent transparent;
+      border-radius: 50%/160px 197px 0 0;
+      transform: rotateY(31deg) rotate(10deg);
+      clip-path: circle(53% at 55% 55%);
+    }
+    .band {
+      animation: headsetBandUp 4s ease backwards;
+    }
+    @keyframes headsetBandUp {
+      10% {
+        transform: rotateY(31deg) rotate(10deg);
+      }
+      15% {
+        top: -3px;
+        left: -150px;
+        transform: rotateY(-3deg) rotate(15deg);
+        clip-path: circle(53% at 54% 54%);
+      }
+      90% {
+        top: -3px;
+        left: -150px;
+        transform: rotateY(-3deg) rotate(15deg);
+        clip-path: circle(53% at 54% 54%);
+      }
+    }
+    #headset-bottom {
+      z-index: 3;
+      position: absolute;
+      top: 87px;
+      left: 200px;
+      width: 150px;
+      height: 150px;
+      border: 0.5px solid #ffd16b;
+      background-color: #ffdf6b;
+      border-radius: 50%;
+      transform: rotateY(42deg);
+      box-shadow: 0px 1px 12px rgb(58, 51, 10);
+    }
+    .headset {
+      animation: headsetUp 4s ease backwards;
+    }
+    @keyframes headsetUp {
+      5% {
+        transform: rotateY(42deg);
+        left: 200px;
+      }
+      10% {
+        transform: rotateY(62deg);
+        left: 230px;
+      }
+      87% {
+        transform: rotateY(62deg);
+        left: 230px;
+      }
+    }
+    #headset-bottom:before {
+      position: absolute;
+      content: "";
+      top: 17px;
+      left: 25px;
+      width: 120px;
+      height: 120px;
+      border: 0.5px solid #ffd16b;
+      background-color: #f5e65c;
+      box-shadow: inset 2px 4px 12px rgb(153, 134, 26);
+      border-radius: 50%;
+    }
+    #headset-bottom:after {
+      position: absolute;
+      content: "";
+      top: 39px;
+      left: 62px;
+      width: 80px;
+      height: 80px;
+      border: 0.5px solid #ffd16b;
+      background-color: #ee3535;
+      border-radius: 50%;
+    }
+    #headset-top {
+      position: absolute;
+      top: 56px;
+      left: 90px;
+      border: 5px solid yellow;
+      width: 50px;
+      height: 35px;
+      border-radius: 40%;
+      transform: rotateY(42deg) rotateZ(-5deg);
+      z-index: 14;
+    }
+    #headset-top:after {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      content: "";
+      background-color: yellow;
+      width: 30px;
+      height: 5px;
+      border-top: 10px solid red;
+    }
+    #glasses {
+      position: absolute;
+      top: 30px;
+      left: -20px;
+      width: 300px;
+      height: 300px;
+    }
+    .glass {
+      animation: glassUp 4s ease backwards;
+    }
+    @keyframes glassUp {
+      0% {
+        top: 30px;
+      }
+      5% {
+        left: 0px;
+      }
+      95% {
+        top: -15px;
+      }
+      85% {
+        top: 10px;
+      }
+      90% {
+        top: -5px;
+      }
+      95% {
+        top: 5px;
+        left: 0px;
+      }
+      100% {
+        top: 0px;
+      }
+    }
+    #glasses-frame {
+      z-index: 3;
+      content: "";
+      position: absolute;
+      top: 104px;
+      left: 78px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 6px solid black;
+      opacity: 0;
+    }
+    .frame {
+      animation: glassFrameUp 4s ease backwards;
+    }
+    @keyframes glassFrameUp {
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+    }
+    #glasses-frame:before {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: 171px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 6px solid black;
+    }
+    #glasses-frame:after {
+      content: "";
+      position: absolute;
+      top: 77px;
+      left: 130px;
+      width: 47px;
+      height: 6px;
+      background-color: black;
+      transform: rotate(16deg);
+    }
+    #glasses-hand {
+      z-index: 4;
+      position: absolute;
+      top: 248px;
+      left: 351px;
+      width: 100px;
+      height: 200px;
+      background-color: rgb(99, 90, 90);
+      border-radius: 42% 58% 63% 37% / 42% 34% 66% 58%;
+      transform: rotate(-7deg);
+      opacity: 0;
+    }
+    .hand {
+      animation: glassHandUp 4s ease backwards;
+    }
+    @keyframes glassHandUp {
+      10% {
+        opacity: 1;
+      }
+      99% {
+        opacity: 1;
+      }
+    }
+    #working {
+      z-index: 4;
+      position: absolute;
+      top: 233px;
+      left: -15px;
+      opacity: 1;
+    }
+    .working-hand {
+      animation: working-hand 4s linear backwards;
+    }
+    @keyframes working-hand {
+      1% {
+        opacity: 0;
+      }
+      99% {
+        opacity: 0;
+      }
+    }
+    #working-hand1 {
+      position: absolute;
+      top: -8px;
+      left: 0px;
+      width: 118px;
+      height: 200px;
+      background-color: rgb(99, 90, 90);
+      border-radius: 42% 58% 63% 37% / 42% 34% 66% 58%;
+      animation: hand1 0.1s ease infinite;
+      animation-play-state: running;
+    }
+    @keyframes hand1 {
+      0% {
+        transform: rotate(-30deg);
+      }
+      30% {
+        transform: rotate(-30deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      70% {
+        transform: rotate(-30deg);
+      }
+    }
+    #working-hand2 {
+      position: absolute;
+      top: 32px;
+      left: 271px;
+      width: 118px;
+      height: 200px;
+      background-color: rgb(90, 81, 81);
+      border-radius: 42% 58% 63% 37% / 42% 34% 66% 58%;
+      transform: rotate(-70deg);
+      animation: hand2 0.1s ease infinite;
+      animation-play-state: runnnig;
+    }
+    @keyframes hand2 {
+      0% {
+        transform: rotate(-70deg);
+      }
+      30% {
+        transform: rotate(-70deg);
+      }
+      50% {
+        transform: rotate(-30deg);
+      }
+      70% {
+        transform: rotate(-70deg);
+      }
+    }
+    #computer {
+      position: absolute;
+      top: 126px;
+      left: 50px;
+    }
+    #monitor {
+      position: relative;
+      top: 0px;
+      left: 20px;
+    }
+    #screen-ground {
+      z-index: 7;
+      position: relative;
+      top: 0px;
+      left: 120px;
+      width: 330px;
+      height: 250px;
+      background: linear-gradient(
+        144deg,
+        rgba(216, 223, 234, 1) 45%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(216, 223, 234, 1) 55%
+      );
+      transform: rotate(-2deg) skew(2deg) scale(1);
+      border-radius: 20%;
+      border: 0.5px solid rgb(213, 226, 255);
+    }
+    #screen-shadow1 {
+      position: absolute;
+      z-index: 8;
+      top: 1px;
+      left: 180px;
+      width: 201px;
+      height: 20px;
+      background: linear-gradient(
+        -50deg,
+        rgba(216, 223, 234, 1) 15%,
+        rgb(176, 191, 222) 60%,
+        rgba(216, 223, 234, 1) 85%
+      );
+      transform: rotate(-2deg) skew(2deg) scale(1);
+      border-top: 0.5px solid rgb(213, 226, 255);
+    }
+    #screen-shadow2 {
+      position: absolute;
+      z-index: 8;
+      top: 55px;
+      left: 429.7px;
+      width: 20px;
+      height: 117px;
+      background: linear-gradient(
+        -50deg,
+        rgba(216, 223, 234, 1) 15%,
+        rgba(187, 198, 221, 1) 34%,
+        rgba(216, 223, 234, 1) 85%
+      );
+      transform: rotate(-2deg) skew(2deg) scale(1);
+      border-right: 0.5px solid rgb(213, 226, 255);
+    }
+    #screen-line1 {
+      z-index: 10;
+      position: absolute;
+      top: 32px;
+      left: 114px;
+      width: 20px;
+      height: 24px;
+      background: rgb(216, 223, 234);
+      transform: rotate(43deg) skew(2deg) scale(1);
+      border-left: 0.5px solid rgb(213, 226, 255);
+    }
+    #screen-line2 {
+      z-index: 10;
+      position: absolute;
+      top: 218px;
+      left: 415.5px;
+      width: 20px;
+      height: 27px;
+      background: rgb(216, 223, 234);
+      transform: rotate(43deg) skew(2.5deg) scale(1);
+      border-right: 0.5px solid rgb(213, 226, 255);
+    }
+    #screen-cover {
+      z-index: 10;
+      position: absolute;
+      top: 21px;
+      left: 102px;
+      width: 330px;
+      height: 250px;
+      background: #bbc6dd;
+      box-shadow: inset 15px -15px 30px #7f8797, inset -15px 15px 30px #ffffff;
+      transform: rotate(-2deg) skew(2deg) scale(1);
+      border-radius: 20%;
+      border: 0.5px solid rgb(190, 200, 233);
+    }
+    #cover-shadow1 {
+      z-index: 11;
+      position: absolute;
+      top: 70px;
+      left: 41px;
+      width: 200px;
+      height: 150px;
+      background: #b1bcd0;
+      box-shadow: inset 22px -22px 26px #99a2b5, inset -22px 22px 26px #ddeaff;
+      border-radius: 20%;
+      /* border: 0.5px 1px 0px 0px solid rgb(35, 36, 41); */
+      border-left: 0.5px solid gray;
+      border-bottom: 0.5px solid gray;
+
+      transform: rotate(0.5deg) skew(1deg) scale(1);
+    }
+    #cover-shadow2 {
+      z-index: 10;
+      position: absolute;
+      top: 70px;
+      left: 41px;
+      width: 190px;
+      height: 140px;
+      background: linear-gradient(225deg, #c8d4ec, #a8b2c7);
+      box-shadow: -21px 21px 54px #969eb1, 21px -21px 54px #e0eeff;
+      transform: rotate(0.5deg) skew(1deg) scale(1);
+      border-radius: 20%;
+    }
+    #desk {
+      z-index: 10;
+      position: relative;
+      top: -173px;
+      left: -20px;
+    }
+    #desk-top {
+      position: absolute;
+      top: 0px;
+      left: -64px;
+      width: 800px;
+      height: 600px;
+      background: #99ddfd;
+      transform: rotateX(87deg) rotateY(-1deg) rotateZ(15deg);
+    }
+    #desk-side {
+      position: absolute;
+      top: 317px;
+      left: -150px;
+    }
+    #desk-side:before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -6px;
+      width: 800px;
+      height: 200px;
+      background: #6f62b7;
+    }
+    #desk-side:after {
+      content: "";
+      position: absolute;
+      top: -19px;
+      left: 474px;
+      width: 800px;
+      height: 200px;
+      background: #257790;
+      transform: rotateX(1.1deg) rotateY(78.5deg) rotateZ(-3.5deg);
+    }
+    #monitor-deck {
+      position: relative;
+      top: 74px;
+      left: 138px;
+    }
+    #deck-base {
+      z-index: 11;
+      position: absolute;
+      top: 7px;
+      left: -20px;
+      width: 247px;
+      height: 45px;
+      background-color: rgb(176, 181, 197);
+      transform: rotate(-2.5deg) skew(1deg) scale(1);
+    }
+    #deck-base:before {
+      content: "";
+      position: absolute;
+      top: -104px;
+      left: 24px;
+      width: 200px;
+      height: 300px;
+      background-color: rgb(176, 181, 197);
+      border-radius: 20%;
+      transform: rotateX(87deg) rotateY(2deg) rotateZ(15deg);
+    }
+    #deck-base:after {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: 24px;
+      width: 200px;
+      height: 300px;
+      background: #bbc6dd;
+      box-shadow: inset 28px -28px 56px #8a91a0, inset -28px 28px 56px #eef4ff;
+      border-radius: 20%;
+      transform: rotateX(87deg) rotateY(2deg) rotateZ(15deg);
+    }
+    #deck-line {
+      z-index: 11;
+      position: relative;
+      top: 10px;
+      left: 76px;
+      width: 247px;
+      height: 45px;
+      transform: rotate(-3deg) skew(-3deg) scale(1);
+      -webkit-transform: rotate(-3deg) skew(-3deg) scale(1);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    #deck-line:before {
+      z-index: 15;
+      position: absolute;
+      content: "";
+      top: -2px;
+      left: -74px;
+      width: 132px;
+      height: 45px;
+      background: linear-gradient(
+        90deg,
+        rgba(176, 181, 197, 1) 0%,
+        rgb(146, 155, 170) 51%,
+        rgba(176, 181, 197, 1) 100%
+      );
+      transform: rotateX(14deg) rotateY(12deg);
+      -webkit-transform: rotateX(14deg) rotateY(12deg);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    #deck-line:after {
+      z-index: 20;
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 67px;
+      width: 126px;
+      height: 45px;
+      background: linear-gradient(
+        90deg,
+        rgba(176, 181, 197, 1) 0%,
+        rgb(153, 161, 175) 51%,
+        rgba(176, 181, 197, 1) 100%
+      );
+      transform: rotateX(-5deg) rotateY(74deg) rotateZ(2deg);
+      -webkit-transform: rotateX(-5deg) rotateY(74deg) rotateZ(2deg);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    #monitor-neck {
+      position: absolute;
+      top: 200px;
+      left: 30px;
+    }
+    #neck-line {
+      z-index: 17;
+      position: absolute;
+      top: -12px;
+      left: 194px;
+      width: 50px;
+      height: 28px;
+      background-color: #f2f2fb;
+      transform-origin: 50% 50%;
+      transform: rotateX(-50deg) rotateY(-11deg) rotateZ(-13deg);
+    }
+    #neck-line:after {
+      position: absolute;
+      content: "";
+      left: -76px;
+      top: 197px;
+      width: 50px;
+      height: 28px;
+      background-color: #f2f2fb;
+      transform: rotateX(76deg) rotateY(-3deg) rotateZ(32deg);
+    }
+    #neck-surface {
+      z-index: 18;
+      position: absolute;
+      top: 11px;
+      left: 196px;
+      width: 50px;
+      height: 168px;
+      transform: rotateX(45deg) rotateY(-10deg) rotateZ(10deg);
+      background-color: #f2f2fb;
+      transform-origin: 50% 0%;
+    }
+    #neck-surface:before {
+      position: absolute;
+      content: "";
+      left: -10px;
+      top: -26px;
+      width: 50px;
+      height: 200px;
+      background: linear-gradient(
+        90deg,
+        rgb(140, 151, 172) 0%,
+        rgb(213, 216, 239) 74%
+      );
+      border-top: 0.5px solid rgb(167, 169, 180);
+      border-bottom: 0.5px solid rgb(204, 210, 248);
+    }
+    #coffee {
+      position: absolute;
+      top: 381px;
+      left: 500px;
+    }
+
+    #coffee-cup {
+      z-index: 20;
+      font-size: 1em;
+      text-align: center;
+      color: tomato;
+      position: absolute;
+      top: -55px;
+      left: 0px;
+      width: 80px;
+      height: 47px;
+      background-color: #fff;
+      border-top: 5px solid #e67d7d;
+      border-radius: 0 0 70px 70px / 0 0 110px 110px;
+    }
+    #coffe-cup:hover {
+      top: -50px;
+      color: rgb(41, 27, 25);
+    }
+    #coffee-cup:after {
+      position: absolute;
+
+      content: "";
+      top: 6px;
+      right: -13px;
+      width: 20px;
+      height: 20px;
+
+      border: 5px solid #fff;
+      border-radius: 50%;
+    }
+    #coffee-smoke1 {
+      z-index: 15;
+      position: absolute;
+      left: 17px;
+      width: 8px;
+      height: 20px;
+      border-radius: 5px;
+      background-color: #ffffff;
+      opacity: 0;
+      animation: smoke 1.5s 0s linear infinite;
+    }
+    #coffee-smoke2 {
+      z-index: 15;
+      position: absolute;
+      left: 35px;
+      width: 8px;
+      height: 20px;
+      border-radius: 5px;
+      background-color: #ffffff;
+      opacity: 0;
+      animation: smoke 1.5s 0.4s linear infinite;
+    }
+    #coffee-smoke3 {
+      z-index: 15;
+      position: absolute;
+      left: 53px;
+      width: 8px;
+      height: 20px;
+      border-radius: 5px;
+      background-color: #ffffff;
+      opacity: 0;
+      animation: smoke 1.5s 0.8s linear infinite;
+    }
+    @keyframes smoke {
+      0% {
+        bottom: 20px;
+        opacity: 0;
+      }
+      40% {
+        bottom: 40px;
+        opacity: 0.5;
+      }
+      80% {
+        bottom: 60px;
+        opacity: 0.2;
+        height: 15px;
+      }
+      100% {
+        bottom: 75px;
+        opacity: 0;
+        height: 0px;
+      }
+    }
+    #books {
+      position: absolute;
+      top: 250px;
+      left: 0px;
+    }
+    #book1 {
+      position: absolute;
+      font-size: 20px;
+    }
+    #book1-bottom {
+      z-index: 10;
+      position: absolute;
+      content: "";
+      top: 48px;
+      left: -34px;
+      width: 150px;
+      height: 150px;
+      background-color: rgb(5, 0, 123);
+      transform: rotateY(-37deg) rotateZ(0deg) rotateX(83deg);
+      box-shadow: 30px 30px 30px #561a1a7a;
+    }
+    #book1-book {
+      position: absolute;
+      top: 100px;
+      left: -40px;
+      width: 100px;
+      height: 30px;
+      background-color: rgb(239, 238, 255);
+      z-index: 10;
+    }
+    #book1-book:before {
+      position: absolute;
+      content: " 자바의 정석";
+      color: wheat;
+      text-align: center;
+      top: -8px;
+      left: 70px;
+      width: 150px;
+      height: 30px;
+      background-color: rgb(7, 3, 93);
+      transform: rotateY(52deg) rotateZ(-7deg) rotateX(-1deg);
+    }
+    #book1-book:after {
+      position: absolute;
+      content: "";
+      top: -82px;
+      left: 8px;
+      width: 150px;
+      height: 150px;
+      background-color: rgb(5, 0, 123);
+      transform: rotateY(-37deg) rotateZ(0deg) rotateX(83deg);
+    }
+    #book1 {
+      position: absolute;
+      font-size: 14px;
+    }
+    #book2-bottom {
+      position: absolute;
+      content: "";
+      top: 21px;
+      left: -28px;
+      width: 140px;
+      height: 140px;
+      background-color: rgb(255, 201, 169);
+      transform: rotateY(-37deg) rotateZ(0deg) rotateX(83deg);
+      z-index: 10;
+    }
+    #book2-book {
+      position: absolute;
+      top: 76px;
+      left: -40px;
+      width: 100px;
+      height: 20px;
+      background-color: #fff9e2;
+      z-index: 10;
+    }
+    #book2-book:before {
+      position: absolute;
+      content: "이펙티브 자바";
+      color: rgb(155, 65, 5);
+      text-align: center;
+      top: -5px;
+      left: 67px;
+      width: 140px;
+      height: 20px;
+      background-color: rgb(255, 201, 169);
+      transform: rotateY(52deg) rotateZ(-7deg) rotateX(-1deg);
+    }
+    #book2-book:after {
+      position: absolute;
+      content: "";
+      top: -74px;
+      left: 12px;
+      width: 140px;
+      height: 140px;
+      background-color: rgb(255, 201, 169);
+      transform: rotateY(-37deg) rotateZ(0deg) rotateX(83deg);
+    }
+  </style>
+  <body>
+    <div id="page">
+      <div id="canvas">
+        <div id="sweat1"></div>
+        <div id="sweat2"></div>
+        <div id="sweat3"></div>
+        <div id="pengsoo" class="crazy">
+          <div id="body">
+            <div id="head">
+              <div id="face"></div>
+              <div id="eye1">
+                <div id="pupil1"></div>
+              </div>
+              <div id="eye2">
+                <div id="pupil2"></div>
+              </div>
+              <div id="mouth-top">
+                <div id="nose-hole"></div>
+              </div>
+              <div id="mouth-lip1"></div>
+              <div id="mouth-lip2"></div>
+              <div id="blush"></div>
+              <!-- face -->
+            </div>
+            <div id="headset">
+              <div id="headset-band"></div>
+              <div id="headset-bottom"><div id="headset-top"></div></div>
+            </div>
+            <div id="glasses">
+              <div id="glasses-frame"></div>
+              <div id="glasses-hand"></div>
+            </div>
+            <div id="working">
+              <diiv id="working-hand1"></diiv>
+              <diiv id="working-hand2"></diiv>
+            </div>
+            <!-- body -->
+          </div>
+          <!-- pengsoo -->
+        </div>
+        <div id="computer">
+          <div id="monitor">
+            <div id="screen-ground"></div>
+            <div id="screen-shadow1"></div>
+            <div id="screen-shadow2"></div>
+            <div id="screen-line1"></div>
+            <div id="screen-line2"></div>
+            <div id="screen-cover">
+              <div id="cover-shadow1"></div>
+              <div id="cover-shadow2"></div>
+            </div>
+          </div>
+          <div id="desk">
+            <div id="desk-top"></div>
+            <dic id="desk-side"> </dic>
+          </div>
+
+          <div id="monitor-deck">
+            <div id="deck-base"></div>
+            <div id="deck-line"></div>
+          </div>
+          <div id="monitor-neck">
+            <div id="neck-line"></div>
+            <div id="neck-surface"></div>
+          </div>
+          <div id="coffee">
+            <div id="coffee-smoke1"></div>
+            <div id="coffee-smoke2"></div>
+            <div id="coffee-smoke3"></div>
+            <div id="coffee-cup">펭♥</div>
+          </div>
+          <div id="books">
+            <div id="book1">
+              <div id="book1-bottom"></div>
+              <div id="book1-book"></div>
+            </div>
+            <div id="book2">
+              <div id="book2-bottom"></div>
+              <div id="book2-book"></div>
+            </div>
+          </div>
+          <!-- computer -->
+        </div>
+
+        <!-- canvas -->
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#pengsoo").on("click", function () {
+          $("#pengsoo").removeClass("crazy");
+          $("#pengsoo").addClass("wakeUp");
+          $("#head").addClass("head");
+          $("#face").addClass("face");
+          $("#headset-band").addClass("band");
+          $("#headset-bottom").addClass("headset");
+          $("#glasses").addClass("glass");
+          $("#glasses-frame").addClass("frame");
+          $("#glasses-hand").addClass("hand");
+          $("#working").addClass("working-hand");
+          $("#working-hand1").css("animation-play-state", "paused");
+          $("#working-hand2").css("animation-play-state", "paused");
+          setTimeout(function () {
+            $("#pengsoo").removeClass("wakeUp");
+            $("#head").removeClass("head");
+            $("#face").removeClass("face");
+            $("#headset-band").removeClass("band");
+            $("#headset-bottom").removeClass("headset");
+            $("#glasses").removeClass("glass");
+            $("#glasses-frame").removeClass("frame");
+            $("#glasses-hand").removeClass("hand");
+            $("#working").removeClass("working-hand");
+            $("#pengsoo").addClass("crazy");
+            $("#working-hand1").css("animation-play-state", "running");
+            $("#working-hand2").css("animation-play-state", "running");
+          }, 4500);
+        });
+      });
+    </script>
+  </body>
+</html>

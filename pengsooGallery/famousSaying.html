@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+    
+    <style>
+        body {
+            overflow-x: hidden;
+            background-color: white;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .item {
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            padding-top: 40px;
+            background: #ccc;
+            text-align: center;
+            color: #FFF;
+            font-size: 3em;
+        }
+
+        p{
+            font-size: 30px;
+            font-family: '210 오복상회';
+            font-weight: bold;
+            color: rgb(43, 43, 43);
+        }
+
+        #rText, #lText {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            padding-top: 30px;
+        }
+
+        #rText{
+            right: 20px;
+            text-align: right;
+        }
+
+
+        #lText{
+            padding-left: 20px;
+            background-color: #ffbe00;
+            width: 950px;
+            z-index: -1;
+        }
+
+        #lText p {
+            font-size: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="lText">
+        <p style="margin-top: 20px;">Pengsoo's</p> <br>
+        <p>Famous Sayings</p>
+    </div>
+
+
+    <div class="item"><img src="./img/exPeng1.png" alt=""></div>
+    <div class="item"><img src="./img/exPeng2.png" alt=""></div>
+    <div class="item"><img src="./img/exPeng3.png" alt=""></div>
+    <div class="item"><img src="./img/exPeng4.png" alt=""></div>
+    <div class="item"><img src="./img/exPeng5.png" alt=""></div>
+    <div class="item"><img src="./img/exPeng7.png" alt=""></div>
+    <div class="item"><img src="./img/exPeng6.png" alt=""></div>
+
+    <div id="rText">
+        <p style="margin-top: 20px;">내가 힘든데, 힘내라고 하면 힘이 납니까?</p> <br>
+        <p>아니죠, 그쵸? 그러니까 힘내라는 말보다</p> <br>
+        <p>저는 '사랑해'라고 해주고 싶습니다.</p> <br>
+        <p>여러분들 사랑합니다.</p>
+
+        <p style="margin-top: 60px;">다 잘할 수 없어요. </p> <br>
+        <p>펭수도 달리기는 조금 느립니다.</p> <br>
+        <p>하나 잘 못한다고 너무 속상해하지 마세요.</p> <br>
+        <p>잘하는게 분명 있을 겁니다.</p> <br>
+        <p>그걸 더 잘하면 돼요</p>
+    </div>
+
+</body>
+</html>

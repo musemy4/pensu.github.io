@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+    <style>
+        html {
+            overflow: hidden;
+            touch-action: none;
+            content-zooming: none;
+        }
+        body {
+            margin:0;
+            padding:0;
+            background:#000;
+            position:absolute;
+            width:100%;
+            height:100%;
+            font-family: 'Typo_SsangmunDongB';
+        }
+        
+        h2{
+            position:absolute;
+            top:30%;
+            color:honeydew;
+            left:30%;
+        }
+        #cau{
+            width: 100px;
+            height: 100px;
+            position:absolute;   
+            z-index: 5;
+            left:20%;
+            top:30%;
+        }
+
+        button{
+            position:absolute;
+            left:50%;
+            top:50%;
+
+        }
+        .cover{
+            position:absolute;
+            display:block;
+            width:100%;
+            height:100%;
+            background-color: #1e8105;
+            z-index:6;
+        }
+        #screen {
+            position:absolute;
+            width:90%;
+            height:100%;
+            z-index: 4;
+        }
+        #screen .img{
+            position:absolute;
+            cursor:pointer;
+            width:100%;
+            height:100%;
+            user-select: none;
+        }
+        #screen .frame {
+            position:absolute;
+            width:50%;
+            height:50%;
+        }
+        #images {
+            display:none;
+        }
+        
+        
+        #start{
+            font-family:'Typo_SsangmunDongB';
+            font-size:30px;
+            background-color: none;
+
+            width: 300px;
+            height:70px;
+            cursor:pointer;
+        }
+
+        #score{
+            position:absolute;
+            left:92%;
+            height: 100%;
+        }
+
+        h4{
+            left:3%;
+            color: white;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <img id="cau" src="./cau.png" alt="">
+        <h2>최대한 나눠보세요<br>
+        본 개발자는 눈의 피로에 책임지지 않습니다..<br>    
+        </h2>
+        
+        
+        <button id="start">시작한다..</button>
+       
+    </div>
+    <div id="screen"></div> 
+    <div id="images">
+        <img src="0.jpg">
+        <img src="0.jpg">
+        <img src="1.jpg">
+        <img src="1.jpg">
+    </div>
+    <div id="score">
+        <h4>FRAME:<br>
+            <span id="tries">
+                1
+            </span>
+            개
+        </h4>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $('#start').on('click',function(){
+        $('.cover').fadeOut(1500);
+    })
+
+    nums=document.querySelector('#tries');
+
+    //클릭하면 나눈다
+    window.addEventListener('load', function () {
+        var src = document.getElementById("images").getElementsByTagName("img"),//이미지들을 가져온다
+        img = function img (el,x,y) {
+            var d = document.createElement("div");
+            d.className     = "frame";
+            d.style.left    = 50 * x + "%";
+            d.style.top     = 50 * y + "%";
+            var img         = document.createElement("img");
+            img.className   = "img";
+            img.src         = src[Math.floor(Math.random()*src.length)].src;
+            img.onmousedown = function () {
+                div(this.parentNode);
+                this.parentNode.removeChild(this);
+            }
+            d.appendChild(img);
+            el.appendChild(d);
+            nums.innerHTML=eval(Number(nums.innerHTML)+0.75);
+        },
+        div = function div (el) {
+            img(el,0,0);
+            img(el,1,0);
+            img(el,0,1);
+            img(el,1,1);
+        };
+        div(document.getElementById("screen"));
+        window.ondragstart = function() { return false; } 
+    }, false);
+
+
+</script>
+</html>

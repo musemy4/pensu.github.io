@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/exhibition_start.css">
+</head>
+
+<body>
+    <!-- 웰컴! -->
+    <section class="container">
+        <h1 class="title" id="first">
+          <span>Welcome</span>
+          <span>to the</span>
+          <span>pengsoo exhibition</span>
+        </h1>
+        
+        <h2 class="title" id="second">
+          <span>have</span>
+          <span>a good</span>
+          <span>time</span>
+        </h2>
+    </section>
+
+    <!-- 스크롤 -->
+    <span class="scroll-btn" id="scroll" style="visibility: hidden;">
+        <a href="#">
+            <span class="mouse">
+                <span>
+                </span>
+            </span>
+        </a>
+        <p>scroll down</p>
+    </span>
+
+    <script>
+        window.onload = function() {
+            var scroll = document.getElementById("scroll");
+            setTimeout(function() {
+                scroll.style.visibility="visible";
+            },7500);
+        }
+    </script>
+    
+</body>
+</html>

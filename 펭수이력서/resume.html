@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" 
+          content="width=device-width, height=device-height, 
+                     minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <title>Insert title here</title>
+    <link href="../font/font.css" rel="stylesheet" type="text/css">
+
+    <style>
+
+        body{
+            font-family: '210 오복상회';   
+            /* overflow: hidden; */
+        }
+
+        .Dleft {
+            margin-left: 25%;
+            width: 50%;
+            /* float: left; */
+            box-sizing: border-box;
+        }
+
+        table input{
+            width: 100%;
+            text-align: center;
+        }   
+
+        table {
+            
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+        }
+
+        /* 나 이런 펭귄이야!! */
+        th {
+            height: 50px;
+            font-size: 50px;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        td {
+            padding: 1%;
+            text-align: left;
+        }
+
+        #tableImg{
+            border: 0;
+            width: 150px;
+        }
+
+        #tableImg img{
+            width: 170px;
+            height: 180px;
+            background-color:whitesmoke ;
+            display: block;
+        }
+
+        .t4 {
+            text-align-last: center ;
+        }
+
+       
+    
+    </style>
+
+    
+</head>
+ 
+<body>
+    
+    <div class="Dleft">
+       
+        <!-- 이력서 시작 -->
+        <table class="main">
+          <table class = "t1">
+                <td rowspan="10" >
+                    <div id="tableImg">
+                        <img src = "pengsoo.gif" alt="">
+                    </div>
+                </td>
+       
+                <th colspan="3">나 이런 펭귄이야!!</th>
+                <tr></tr>
+            
+                <td>이름</td>
+                <td>펭수</td>
+                <tr></tr>
+                
+                <td>나이</td>
+                <td>10살</td>
+                <tr></tr>
+                
+                <td>경력</td>
+                <td>EBS연습생</td>
+                <tr></tr>
+            
+                <td>꿈</td>
+                <td>최고의 크리에이터</td>
+                <tr></tr>
+            </table> 
+
+
+            <table class = t2 >
+
+               <td>키</td>
+               <td>210cm</td>
+               <td>몸무게</td>
+               <td>핸들이고장난 8ton</td>
+               <tr></tr>
+
+               
+               <td>고향</td>
+               <td><span style="color:red;"><del>빙하</del></span> 소품실?</td>
+               <td>사는곳</td>
+               <td>EBS 소품실 구석</td>
+               <tr></tr>
+
+               
+               <td>성격</td>
+               <td colspan="3"><span style="color:red;"><del>완벽함.</del></span> 
+                의욕이만 넘치는편. 관심종자</td>
+               <tr></tr>
+           
+            </table>
+                
+            <table class = t3>
+                <tr>
+                
+              <td>특기</td>
+              <td>취미</td>
+              <td>존경하는인물</td>
+              <td>가장 슬펏을때</td>
+             </tr>
+
+             <tr>
+
+              <td>뭐든지잘함<br>
+                  랩 조금<br>
+                  비트박스 조금?
+              </td>
+              <td>대한민국 초등학생<br>들 사이에서화제가<br>되는건 뭐든</td>
+              <td><span style="color:red;"><del>뽀로로</del></span>
+                <br><span style="color: rgb(216, 25, 25);">남궁성강사님</span>
+                <br>나 자신</td>
+              <td>남극에서 덩치가 크단<br>이유로 다른 펭귄들이<br>인정을 안해줬을때</td>
+              </tr>
+
+
+              <tr>
+              <td>가장 힘들었을때</td>
+              <td>가장 기뻤을때</td>
+              <td>가장 뿌듯했을 때</td>
+              <td>하고 싶은 말</td>
+              </tr>
+
+            
+              <td>남극에서 한국까지<br>헤엄쳐오느라<br>힘들었다.</td>
+              <td><span style="color:red;"><del>스케줄 취소된날</del></span><br>
+              EBS연습생 기회를<br>얻었을때</td>
+              <td>한국에서 친구들이 날<br>알아봐주는 모든 <br>순간</td>
+              <td>Yo,자이언트 펭TV,<br>Let's 구독</td>
+              
+         
+            </table>
+            <table class = t4>
+
+                <!-- 수정전 원본 : 주석처리한 것 처럼 onclick에 location.href 형식으로 걍 넣으면 됨 -->
+                <!-- onclick="location.href='https://cafe.naver.com/giantpengtv?iframe_url=/MyCafeIntro.nhn%3Fclubid=29884561';" -->
+                <td><input class = imagebtn type="image" src="pbtn1.png"  value="펭카페" onclick="opencafe()" /> <br>펭카페</td>
+
+                <!-- onclick="location.href='https://www.youtube.com/channel/UCtckgmUcpzqGnzcs7xEqMzQ/about</p>';" -->
+                <td><input class = imagebtn type="image" src="pbtn2.png"  value="펭투브" onclick="openYouTube()" />펭튜브</td>
+
+                <!-- onclick="location.href='https://namu.wiki/w/%ED%8E%AD%EC%88%98';" -->
+                <td><input class = imagebtn type="image" src="pbtn3.png"  value="남카페" onclick="openNamuWiki()" />펭과사전</td>
+
+                <!-- onclick="location.href='https://www.youtube.com/user/MasterNKS';" -->
+                <td><input class = imagebtn type="image" src="pbtn4.png"  value="남카페" onclick="openceleb()" />셀럽</td>
+
+                <!-- onclick="location.href='https://youtu.be/4qqPEkcwric';" -->
+                <td><input class = imagebtn type="image" src="pbtn5.png"  value="남카페" onclick="openPengo()" />펭~고!</"pbtn4.png"
+                   
+            </table>
+        </table>
+       <!-- 이력서 끝 -->
+    </div>
+</body>
+<script>
+
+
+    function opencafe() {
+        window.open("https://cafe.naver.com/giantpengtv?iframe_url=/MyCafeIntro.nhn%3Fclubid=29884561");
+    }
+
+    function openYouTube() {
+        window.open("https://www.youtube.com/channel/UCtckgmUcpzqGnzcs7xEqMzQ/about");
+    }
+
+    function openNamuWiki() {
+        window.open("https://namu.wiki/w/%ED%8E%AD%EC%88%98");
+    }
+
+    function openceleb() {
+        window.open("https://www.youtube.com/user/MasterNKS");
+    }
+
+    function openPengo() {
+        window.open("https://youtu.be/4qqPEkcwric");
+    }
+
+
+
+
+</script>
+</html>
+
+

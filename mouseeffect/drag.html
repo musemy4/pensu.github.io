@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: rgba(16, 31, 35, 1);
+            width: 100vw;
+            height: 100vh;
+        }
+
+        [draggable] {
+            cursor: move;
+        }
+
+        
+        .img {
+            position:absolute;
+            width: 560px;
+            height: 453px;
+            margin: 100px 400px 0;
+        }
+
+        img{
+            width:160px;
+            height:100px;
+        }
+        div#pengImg {
+            background-image: url('./0.png'); position: absolute; 
+        }
+        div#eye {
+            background-image: url('./1.png'); position: absolute;
+        }
+        div#eye:hover {
+            background-image: url('./2.png'); position: absolute;
+        }
+        div#eye:active {
+            background-image: url('./3.png'); position: absolute;
+        }
+        .items{
+            width:100px;
+            height:50px;
+        }
+        
+        h3{
+            position:absolute;
+            display:none;
+            color:white;
+            font-family:'타이포_쌍문동';
+        }
+        .area{
+            position:absolute;
+            left:45%;
+            top:70%;
+            width:130px;
+            height:80px;
+            background-color: none;
+            border:3px dotted white;
+        }
+        .words{
+            display:block;
+            position:absolute;
+            left:60%;
+            top:20%;
+        }
+        #imgArea{
+            position:absolute;
+            top:-3%;
+            left:-3%;
+        }
+    </style>
+</head>
+<body>
+    <div class="items">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/26612/pumpkin.svg" alt="pumpkin" id="item" style="position: absolute; left: 91px; top: 130px; z-index: 5;">
+        <img draggable="true" src="./candy.png" alt="candy" id="item" style="position: absolute; left: 91px; top: 230px; z-index: 5;">
+        <img draggable="true" src="./chamchi.png" alt="chamchi" id="item" style="position: absolute; left: 91px; top: 330px; z-index: 5;">
+        <img draggable="true" src="./money.png" alt="chamchi" id="item" style="position: absolute; left: 91px; top: 430px; z-index: 5;">
+    
+    </div>
+   <!-- 눈움직이는 영역 -->
+   <div id="imgArea">
+    <div id="pengImg" class="img"></div>
+    <div id="eye" class="img"></div>
+  </div>
+    <div class="words"><h3>고마워♡</h3></div>
+    <div class="area"></div>
+   <script>
+       (function dragndrop() {
+            let xpos = '';
+            let ypos = '';
+            let whichArt = '';
+
+            function resetZ() {
+                const imgEl = document.querySelectorAll('img');
+                for (let i = imgEl.length - 1; i >= 0; i--) {
+                imgEl[i].style.zIndex = 5;
+                }
+            }
+            
+            function moveStart(e) {
+                whichArt = e.target;
+                xpos = e.offsetX === undefined ? e.layerX : e.offsetX;
+                ypos = e.offsetY === undefined ? e.layerY : e.offsetY;
+                whichArt.style.zIndex = 10;
+            }
+
+            function moveDragOver(e) {
+                e.preventDefault();
+            }
+
+            var can=["나주는거냐?","갬동","헐!땡큐","고마워♡"];
+            
+            function moveDrop(e) {
+                e.preventDefault();
+                whichArt.style.left = e.pageX - xpos + 'px';
+                whichArt.style.top = e.pageY - ypos + 'px';
+
+                words=document.querySelector('h3');
+                eye=document.querySelector('#eye');
+                
+                if(whichArt.style.left>=450+"px"&&
+                    whichArt.style.left<=650+"px"&&
+                    whichArt.style.top<=460+"px"&&
+                    whichArt.style.top>=380+"px"){
+
+                    words.innerHTML=can[Math.floor(Math.random()*can.length)];    
+                   words.style.display="block"; 
+                   setTimeout(function(){
+
+                       words.style.display="none";
+                   },1500);
+
+                }
+                
+                
+            }
+            
+            function touchStart(e) {
+                e.preventDefault();
+                const whichArt = e.target;
+                const touch = e.touches[0];
+                let moveOffsetX = whichArt.offsetLeft - touch.pageX;
+                let moveOffsetY = whichArt.offsetTop - touch.pageY;
+                resetZ();
+                whichArt.style.zIndex = 10;
+
+                whichArt.addEventListener('touchmove', function() {
+                let posX = touch.pageX + moveOffsetX;
+                let posY = touch.pageY + moveOffsetY;
+                whichArt.style.left = posX + 'px';
+                whichArt.style.top = posY + 'px';
+                }, false);
+            }
+
+            document.querySelector('body').addEventListener('dragstart', moveStart, false);
+            document.querySelector('body').addEventListener('dragover', moveDragOver, false);
+            document.querySelector('body').addEventListener('drop', moveDrop, false);
+            
+            document.querySelector('body').addEventListener('touchstart', touchStart, false);
+
+            })();
+   </script>
+
+   <!-- 눈알움직이기 -->
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(window).mousemove(function(e){
+              var mx = e.pageX-500;
+              var my = e.pageY-300;
+              x = Math.round(mx/60);
+              y = Math.round(my/60);
+              $('#eye').css('backgroundPosition', x+'px '+y+'px');
+              console.log("( " + mx + ", " + my + " )");
+            });
+    });
+    </script>
+   
+</body>
+</html>

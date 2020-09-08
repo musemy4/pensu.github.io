@@ -1,0 +1,23 @@
+/* back 로고 */
+#back{
+    position: absolute;
+    top:20px;
+    left:20px;
+    width:100px;
+    height:100px;
+    z-index: 5;
+}
+/* back 로고 끝*/
+
+/* 맨위로 올라감 */
+a#MOVE_TOP_BTN{
+    font-size: 22px;
+    position:fixed;
+    right:2%;
+    bottom:50px;
+    display:none;
+    z-index:999;
+    color:black;
+}
+
+/* 맨위로 올라감 끝*/

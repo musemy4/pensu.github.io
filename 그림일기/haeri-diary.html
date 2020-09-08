@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>펭수 그림 일기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+        <style> 
+        html, body {
+            font-family: 'Noto Serif KR', serif;
+            background-color: white;
+            margin: 0;
+            text-align: center;
+            /* height: 80%; */
+        }
+
+        .main {
+            padding-bottom: 2%;
+        }
+
+        h1 {
+            font-size: 70px;
+            line-height: 100px;
+            font-weight: 700;
+            color: #334D5D;
+            margin: 0 auto;
+            text-shadow:
+                 -1px -1px 0 rgb(129, 255, 26),  
+                1px -1px 0 rgb(129, 255, 26), 
+                -1px 1px 0 rgb(129, 255, 26), 
+                1px 1px 0 rgb(129, 255, 26);
+            letter-spacing: 3px;
+            padding-bottom: 1%;
+        }
+
+        .content {
+            width: 80%;;
+            margin: auto;
+            text-align: center;
+        }
+
+        table {
+            margin : 0 auto;
+        }
+
+        table, td {
+            border:1px solid black;
+            border-collapse: collapse;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #date {
+            margin-left: 20px;
+            margin-right: 20px;
+            height: 3rem;
+        }
+
+        #diary {
+            width: 100%;
+        }
+
+        #mask {
+            position: absolute;
+            top: 19rem;
+            left: 21rem;
+            width: 22%;
+        }
+
+        #txt {
+            position: absolute;
+            top: 7rem;
+            left: 3rem;
+            width: 30%;
+            animation: wiggle 4s infinite linear,
+            appear 4s normal linear;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform:rotate(0deg)
+            }
+            33%{
+                transform:rotate(5deg)
+            }
+            66%{
+                transform:rotate(0deg)
+            }
+            100%{
+                transform:rotate(-5deg)
+            }
+
+        }
+
+        @keyframes appear {
+            0% {
+                opacity:0;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity:0;
+            }
+
+            75% {
+                opacity:1;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="diary">
+            <h1> 펭수의 그림 일기 </h1>
+            <table>
+                <tr>
+                    <td >
+                       <h3>날 짜</h3>
+                    </td>
+                    <td>
+                        <img src="date.svg" id="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        
+                        <img src="5hal_animation_notxt.svg" id="diary">
+                        <img src="mask.png" id="mask">
+                        <img src="" id="txt">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquerykeyframes/0.0.9/jquery.keyframes.js"></script>
+
+    <script>
+        $("#mask").on("click", function() {
+       // change the image , and make sure this image path exists ...
+            $("#mask").animate({
+                opacity:'0'
+            }, 'slow');
+            
+            setTimeout(function(){
+                $("#txt").attr("src", "txt3.svg");
+            },500);
+            
+        });
+
+    </script>
+
+</body>
+</html>
